@@ -108,6 +108,21 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 .pw{padding:10px;margin-bottom:16px}
 .pb{width:100%;padding:16px;color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 3px 8px rgba(0,0,0,.2)}
 .pb.blue{background:var(--bl)}.pb.green{background:var(--gn)}
+.pb.preview{background:#117a65}
+/* プレビューモーダル */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:500;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.modal-overlay.show{display:block}
+.modal-inner{background:#e8e8e8;min-height:100%;padding:12px 8px 30px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.modal-header{width:100%;max-width:620px;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#1a5276;color:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.modal-header.gn{background:#1e8449}
+.modal-header h2{font-size:15px;font-weight:700}
+.modal-close{background:rgba(255,255,255,.2);border:none;color:#fff;font-size:22px;cursor:pointer;padding:4px 12px;border-radius:7px;font-weight:700}
+.modal-close:active{opacity:.7}
+.modal-page-label{width:100%;max-width:620px;font-size:13px;color:#444;font-weight:600;padding-left:4px}
+.modal-sheet{width:100%;max-width:620px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.25);border-radius:4px;overflow:hidden}
+.modal-print-btn{width:100%;max-width:620px;padding:14px;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 3px 8px rgba(0,0,0,.2)}
+.modal-print-btn.blue{background:#1a5276}
+.modal-print-btn.gn{background:#1e8449}
 .pb:active{opacity:.85;transform:scale(.98)}
 .ph{text-align:center;font-size:11px;color:var(--gy);margin-top:5px}
 .stt{position:fixed;bottom:18px;right:14px;background:var(--bl);color:#fff;border:none;border-radius:50%;width:42px;height:42px;font-size:19px;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.25);display:none;align-items:center;justify-content:center;z-index:200}
@@ -598,11 +613,84 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 </div>
 
 <div class="pw">
+  <button class="pb preview" id="previewBtn" onclick="doPreview()" style="margin-bottom:10px">👁️　プレビューを表示する</button>
   <button class="pb blue" id="printBtn" onclick="doPrint()">🖨️　A4×2枚でPDF保存・印刷する</button>
-  <div class="ph">ボタン押下後 →「PDFに保存」を選択してください</div>
+  <div class="ph">印刷ボタン押下後 →「PDFに保存」を選択してください</div>
+</div>
+
+<!-- プレビューモーダル -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-inner">
+    <div class="modal-header" id="modalHeader">
+      <h2 id="modalTitle">📋 プレビュー</h2>
+      <button class="modal-close" onclick="closePreview()">✕ 閉じる</button>
+    </div>
+    <div class="modal-page-label">▼ 様式1（表紙）</div>
+    <div class="modal-sheet" id="previewSheet1"></div>
+    <div class="modal-page-label">▼ 様式2（内訳書）</div>
+    <div class="modal-sheet" id="previewSheet2"></div>
+    <button class="modal-print-btn blue" id="modalPrintBtn" onclick="doPrint()">🖨️　このままPDF保存・印刷する</button>
+  </div>
 </div>
 
 <div class="pra" id="pra"></div>
+<style>
+/* モーダル内プレビュー用書類スタイル */
+.modal-sheet .pd{
+  width:100%;
+  padding:6mm 5mm;
+  font-family:'Hiragino Kaku Gothic Pro','Meiryo','Yu Gothic',sans-serif;
+  font-size:8pt;
+  color:#1a1a1a;
+  box-sizing:border-box;
+}
+.modal-sheet .pt{font-size:14pt;font-weight:900;letter-spacing:4px;text-align:center;border:2px solid #1a5276;padding:5px;color:#1a5276;margin-bottom:3px}
+.modal-sheet .pt.gn{border-color:#1e8449;color:#1e8449}
+.modal-sheet .psb{text-align:center;font-size:6pt;color:#888;margin-bottom:3px}
+.modal-sheet .pdn{text-align:right;font-size:7pt;color:#666;margin-bottom:5px}
+.modal-sheet .pmeta{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:5px}
+.modal-sheet .pcn{font-size:11pt;font-weight:700;border-bottom:2px solid #1a5276;padding-bottom:2px;margin-bottom:2px}
+.modal-sheet .pcn.gn{border-bottom-color:#1e8449}
+.modal-sheet .piss{border:0.5px solid #ccc;padding:5px;font-size:7pt;line-height:1.7;text-align:right}
+.modal-sheet .pwk{background:#eaf2f8;padding:4px 7px;font-size:7pt;margin-bottom:5px}
+.modal-sheet .pwk.gn{background:#eafaf1}
+.modal-sheet .pwk table{width:100%;border-collapse:collapse}
+.modal-sheet .pwk td{padding:1px 0}.modal-sheet .pwk td:first-child{color:#555;width:68px;font-weight:500}
+.modal-sheet .pg{text-align:center;padding:7px;margin-bottom:5px}
+.modal-sheet .pg.blue{background:#1a5276;color:#fff}
+.modal-sheet .pg.gn{background:#1e8449;color:#fff}
+.modal-sheet .pg .gl{font-size:8pt}
+.modal-sheet .pg .ga{font-size:16pt;font-weight:900;margin-left:6px}
+.modal-sheet .pfk{border:2px solid #c0392b;padding:5px 8px;margin-bottom:5px}
+.modal-sheet .pfk.gn{border-color:#1e8449}
+.modal-sheet .pfk table{width:100%;border-collapse:collapse;font-size:7.5pt}
+.modal-sheet .pfk td{padding:2px 4px}.modal-sheet .pfk td:last-child{text-align:right;font-weight:500}
+.modal-sheet .fkr{color:#c0392b;font-weight:700}
+.modal-sheet .fkr.gn{color:#1e8449}
+.modal-sheet .fkbg{display:inline-block;border:0.5px solid #c0392b;color:#c0392b;font-size:6pt;padding:0 2px;margin-left:2px}
+.modal-sheet .seal{display:inline-block;border:1px solid #aaa;width:38px;height:38px;line-height:36px;text-align:center;font-size:7.5pt;color:#aaa}
+.modal-sheet .plaw{margin-top:4px;padding:3px 6px;border:0.5px solid #aed6f1;background:#eaf2f8;font-size:6pt;color:#1a5276;line-height:1.5}
+.modal-sheet .plaw.gn{border-color:#a9dfbf;background:#eafaf1;color:#1e8449}
+.modal-sheet .pfn{margin-top:3px;font-size:5.5pt;color:#999;line-height:1.5}
+.modal-sheet .ptbl{width:100%;border-collapse:collapse;font-size:7.5pt;margin-bottom:4px}
+.modal-sheet .ptbl th{background:#1a5276;color:#fff;padding:3px 4px;text-align:center;font-weight:500;font-size:7pt}
+.modal-sheet .ptbl.gn th{background:#1e8449}
+.modal-sheet .ptbl td{border:0.5px solid #ccc;padding:2px 4px;vertical-align:middle}
+.modal-sheet .pcat{background:#d6eaf8;font-weight:600;color:#1a5276;font-size:7pt}
+.modal-sheet .pcat.gn{background:#d5f5e3;color:#1e8449}
+.modal-sheet .pcat2{background:#e8f4fb;font-size:7pt;padding-left:8px!important;color:#1a5276}
+.modal-sheet .pcat2.gn{background:#eafaf1;color:#1e8449}
+.modal-sheet .psub{background:#f5f5f5;padding-left:12px!important;font-size:7pt}
+.modal-sheet .plbr{background:#fefce8;padding-left:12px!important;font-size:7pt}
+.modal-sheet .pfkr{background:#fff3f3;color:#c0392b;font-weight:500;font-size:7pt}
+.modal-sheet .pfkr.gn{background:#eafaf1;color:#1e8449}
+.modal-sheet .ptot{background:#e8ecf0;font-weight:600;font-size:7.5pt}
+.modal-sheet .ptot2{background:#dce4ea;font-weight:700;font-size:8pt}
+.modal-sheet .pgrnd{background:#1a5276;color:#fff;font-weight:700;font-size:8.5pt}
+.modal-sheet .pgrnd.gn{background:#1e8449}
+.modal-sheet .tr{text-align:right}.modal-sheet .tc{text-align:center}
+.modal-sheet .s2n{margin-top:4px;font-size:6pt;color:#666;line-height:1.5;border-top:0.5px solid #ddd;padding-top:3px}
+</style>
 <button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <div class="toast" id="toast"></div>
 
@@ -728,9 +816,8 @@ function nv(id){return parseFloat(document.getElementById(id)?.value)||0;}
 
 function calcKtk(){const days=nv('ktkDays');const amt=Math.round(days*320);sv('ktkAmt',amt);render();}
 function calcAnzen(){
-  const a1=nv('anzen1');const rate=nv('anzenRate');const labor=cs('labor',true);
-  const a2=Math.round(labor*rate/100);sv('anzen2',a2);sv('anzenTotal',a1+a2);
-  document.getElementById('anzenS').textContent='¥'+fmt(a1+a2);render();
+  // calcAnzen は表示更新のみ。実計算は renderJigyo() に統合
+  render();
 }
 
 function calcFk(){
@@ -750,12 +837,23 @@ function render(){
 
 function renderJigyo(){
   const matS=cs('mat',true),laborS=cs('labor',true),otherS=cs('other',false);
-  // 安全衛生経費②経費率分を労務費変動時に再計算
-  const a1=nv('anzen1'),anzenRate2=nv('anzenRate');
-  const anzen2recalc=Math.round(laborS*anzenRate2/100);
-  const anzenTotalRecalc=a1+anzen2recalc;
-  if(nv('anzen2')!==anzen2recalc){sv('anzen2',anzen2recalc);sv('anzenTotal',anzenTotalRecalc);}
-  const ktkAmt=nv('ktkAmt'),anzenAmt=nv('anzenTotal'),shoS=cs('sho',false);
+  // 安全衛生経費：毎回再計算（条件なし）
+  const anzen1=nv('anzen1');
+  const anzenRate2=nv('anzenRate');
+  const anzen2=Math.round(laborS*anzenRate2/100);
+  const anzenTotal=anzen1+anzen2;
+  sv('anzen2', anzen2);
+  sv('anzenTotal', anzenTotal);
+  const anzenAmt=anzenTotal;
+  // セクションヘッダー表示も更新
+  const anzenSEl=document.getElementById('anzenS');
+  if(anzenSEl) anzenSEl.textContent='¥'+fmt(anzenTotal);
+  // ②経費率計上額の表示更新
+  const anzen2El=document.getElementById('anzen2');
+  if(anzen2El) anzen2El.value=anzen2;
+  const anzenTotalEl=document.getElementById('anzenTotal');
+  if(anzenTotalEl) anzenTotalEl.value=anzenTotal;
+  const ktkAmt=nv('ktkAmt'),shoS=cs('sho',false);
   document.getElementById('matS').textContent='¥'+fmt(matS);
   document.getElementById('laborS').textContent='¥'+fmt(laborS);
   document.getElementById('otherS').textContent='¥'+fmt(otherS);
@@ -865,12 +963,47 @@ function clearData(){
 }
 function dlCSV(){const d=collect();const rs=[];rs.push(['埼玉土建上尾伊奈支部　標準見積書']);rs.push(['種別',d.curMode==='jigyo'?'事業者用':'一人親方用']);rs.push(['工事名',d.wTitle],['宛先',d.cName]);const bom='\uFEFF';const csv=bom+rs.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\r\n');const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download=`見積書_${d.wTitle||'無題'}.csv`;a.click();toast('📊 CSVダウンロード','#b7770d');}
 
+function doPreview(){
+  // プレビュー用HTMLを生成してモーダルに表示
+  const isInv=curTab==='invoice';
+  const isOya=curMode==='oya';
+  const color=isOya?'gn':'blue';
+  document.getElementById('modalHeader').className='modal-header'+(isOya?' gn':'');
+  document.getElementById('modalTitle').textContent='📋 プレビュー｜'+(isOya?'一人親方用':'事業者用')+(isInv?' 御請求書':' 御見積書');
+  document.getElementById('modalPrintBtn').className='modal-print-btn '+color;
+
+  // 印刷用HTMLを生成
+  if(isOya) buildOyaHTML();
+  else buildJigyoHTML();
+
+  // pra の中身をプレビューシートに流し込む
+  const praEl=document.getElementById('pra');
+  const sheets=praEl.querySelectorAll('.pd');
+  if(sheets.length>=1) document.getElementById('previewSheet1').innerHTML='<div class="pd">'+sheets[0].innerHTML+'</div>';
+  if(sheets.length>=2) document.getElementById('previewSheet2').innerHTML='<div class="pd">'+sheets[1].innerHTML+'</div>';
+
+  document.getElementById('modalOverlay').classList.add('show');
+  document.getElementById('modalOverlay').scrollTop=0;
+}
+
+function closePreview(){
+  document.getElementById('modalOverlay').classList.remove('show');
+}
+
+// タッチ外クリックで閉じる
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('modalOverlay').addEventListener('click',function(e){
+    if(e.target===this) closePreview();
+  });
+});
+
 function doPrint(){
+  closePreview();
   if(curMode==='jigyo') printJigyo();
   else printOya();
 }
 
-function printJigyo(){
+function buildJigyoHTML(){
   const matS=cs('mat',true),laborS=cs('labor',true),otherS=cs('other',false);
   const ktkAmt=nv('ktkAmt'),anzenAmt=nv('anzenTotal'),shoS=cs('sho',false);
   const{rate,fkAmt}=calcFk();
@@ -996,10 +1129,14 @@ function printJigyo(){
   </div>`;
 
   document.getElementById('pra').innerHTML=s1+s2;
+}
+
+function printJigyo(){
+  buildJigyoHTML();
   setTimeout(()=>window.print(),300);
 }
 
-function printOya(){
+function buildOyaHTML(){
   const days=nv('oyaDays');
   const matS=cs('oyaMat',true);
   const laborS=Math.round(days*nv('oyaLaborDay'));
@@ -1128,6 +1265,10 @@ function printOya(){
   </div>`;
 
   document.getElementById('pra').innerHTML=s1+s2;
+}
+
+function printOya(){
+  buildOyaHTML();
   setTimeout(()=>window.print(),300);
 }
 
