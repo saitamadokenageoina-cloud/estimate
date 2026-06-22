@@ -190,13 +190,13 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 
 <!-- モード切替 -->
 <div class="mode-bar">
-  <div class="mode-btn on" id="modeJigyoBtn" onclick="setMode('jigyo')">🏢 事業者用<br><span style="font-size:10px;font-weight:400">（全建総連版）</span></div>
-  <div class="mode-btn" id="modeOyaBtn" onclick="setMode('oya')">👤 一人親方用<br><span style="font-size:10px;font-weight:400">（全建総連版）</span></div>
+  <div class="mode-btn on" id="modeJigyoBtn" onclick="setMode('jigyo')">🏢 事業者用<br><span style="font-size:10px;font-weight:400">（埼玉土建上尾伊奈支部版）</span></div>
+  <div class="mode-btn" id="modeOyaBtn" onclick="setMode('oya')">👤 一人親方用<br><span style="font-size:10px;font-weight:400">（埼玉土建上尾伊奈支部版）</span></div>
 </div>
 
 <!-- バナー -->
 <div class="banner" id="banner">
-  <h2 class="blue" id="bannerTitle">🏢 事業者用 標準見積書（全建総連版）</h2>
+  <h2 class="blue" id="bannerTitle">🏢 事業者用 標準見積書（埼玉土建上尾伊奈支部版）</h2>
   <p id="bannerDesc">建設業法第20条対応。材料費・労務費・法定福利費・建退共掛金・安全衛生経費を内訳明示した標準見積書を作成します。</p>
   <div class="ln">⚖️ <strong>建設業法第20条：</strong>見積書には材料費・労務費・法定福利費等の内訳明示が義務化（R7.12施行）<br>
   📎 <a href="https://roumuhi.mlit.go.jp/" target="_blank" style="color:#7d6608">国交省「労務費に関する基準」ポータル →</a></div>
@@ -625,7 +625,7 @@ function setMode(m){
   document.getElementById('tbar').className='tbar '+(isOya?'green':'blue');
   document.getElementById('banner').className='banner'+(isOya?' oya':'');
   document.getElementById('bannerTitle').className=isOya?'green':'blue';
-  document.getElementById('bannerTitle').textContent=isOya?'👤 一人親方用 標準見積書（全建総連版）':'🏢 事業者用 標準見積書（全建総連版）';
+  document.getElementById('bannerTitle').textContent=isOya?'👤 一人親方用 標準見積書（埼玉土建上尾伊奈支部版）':'🏢 事業者用 標準見積書（埼玉土建上尾伊奈支部版）';
   document.getElementById('bannerDesc').textContent=isOya?'材料費・労務報酬・法定福利費相当額・建退共・安全衛生経費・一人親方労災保険料・諸経費を内訳明示した一人親方用標準見積書を作成します。':'建設業法第20条対応。材料費・労務費・法定福利費・建退共掛金・安全衛生経費を内訳明示した標準見積書を作成します。';
   document.getElementById('printBtn').className='pb '+(isOya?'green':'blue');
   render();
@@ -862,7 +862,7 @@ function printJigyo(){
   const s1=`<div class="pd">
   <div style="text-align:right;font-size:7pt;color:#666;margin-bottom:2px">建設業許可番号：${licNo||'　'}　許可年月日：${licDate||'　'}</div>
   <div class="pt">${dTitle}</div>
-  <div class="psb">建設業法第20条対応・法定福利費別枠明示様式（全建総連版標準見積書・国交省「労務費に関する基準」令和7年12月施行対応）</div>
+  <div class="psb">建設業法第20条対応・法定福利費別枠明示様式（埼玉土建上尾伊奈支部版標準見積書・国交省「労務費に関する基準」令和7年12月施行対応）</div>
   <div class="pdn">${docNo?'書類番号: '+docNo+'　':''}見積日付: ${fmtD(docDate)}</div>
   <div class="pmeta">
     <div>
@@ -950,7 +950,7 @@ function printJigyo(){
   </table>
   <div class="s2n">
     ※法定福利費（令和8年度・建設業・事業主負担分）：雇用保険${r1}%・健康保険（協会けんぽ埼玉）${r2}%・介護保険${r3}%・厚生年金＋子育て拠出金${r4}%　合計${rate.toFixed(2)}%<br>
-    ※本見積書は全建総連版標準見積書に基づき作成。建設業法第20条・国交省「労務費に関する基準」（R7.12施行）対応。<br>
+    ※本見積書は埼玉土建上尾伊奈支部版標準見積書に基づき作成。建設業法第20条・国交省「労務費に関する基準」（R7.12施行）対応。<br>
     ※埼玉土建上尾伊奈支部　〒362-0021 上尾市菅谷295　TEL:048-773-9863
   </div>
   </div>`;
@@ -995,7 +995,7 @@ function printOya(){
   const s1=`<div class="pd">
   ${licNo?`<div style="text-align:right;font-size:7pt;color:#666;margin-bottom:2px">建設業許可番号：${licNo}　許可年月日：${licDate||''}</div>`:''}
   <div class="pt gn">${dTitle}<span style="font-size:9pt;letter-spacing:1px;margin-left:8px">（一人親方）</span></div>
-  <div class="psb">一人親方用標準見積書（全建総連版・国交省「労務費に関する基準」令和7年12月施行対応）</div>
+  <div class="psb">一人親方用標準見積書（埼玉土建上尾伊奈支部版・国交省「労務費に関する基準」令和7年12月施行対応）</div>
   <div class="pdn">${docNo?'書類番号: '+docNo+'　':''}見積日付: ${fmtD(docDate)}</div>
   <div class="pmeta">
     <div>
@@ -1081,7 +1081,7 @@ function printOya(){
     </tbody>
   </table>
   <div class="s2n">
-    ※本見積書は全建総連版一人親方用標準見積書に基づき作成。建設業法第20条・国交省「労務費に関する基準」（R7.12施行）対応。<br>
+    ※本見積書は埼玉土建上尾伊奈支部版一人親方用標準見積書に基づき作成。建設業法第20条・国交省「労務費に関する基準」（R7.12施行）対応。<br>
     ※法定福利費相当額は一人親方本人負担分。労務報酬＋法定福利費相当額の合計が公共工事設計労務単価を下回らないよう留意。<br>
     ※埼玉土建上尾伊奈支部　〒362-0021 上尾市菅谷295　TEL:048-773-9863
   </div>
