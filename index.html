@@ -73,14 +73,14 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 /* 明細行 */
 .ir3{display:grid;grid-template-columns:1fr 110px 36px;gap:6px;margin-bottom:10px;align-items:center}
 .ir4{display:grid;grid-template-columns:1fr 72px 88px 36px;gap:6px;margin-bottom:10px;align-items:center}
-.ir input{padding:13px 11px;border:1px solid var(--bd);border-radius:8px;font-size:17px;font-family:inherit;color:#1a1a1a;background:#fff;width:100%}
-.ir input.lhi{background:#fefce8}
-.ir input.ro{background:#f5f5f5;color:#666;font-size:17px}
+.ir input{padding:14px 12px!important;border:1px solid var(--bd)!important;border-radius:8px!important;font-size:17px!important;font-family:inherit!important;color:#1a1a1a!important;background:#fff!important;width:100%!important;min-height:50px!important}
+.ir input.lhi{background:#fefce8!important;font-size:17px!important;padding:14px 12px!important}
+.ir input.ro{background:#f5f5f5!important;color:#666!important;font-size:17px!important;padding:14px 12px!important}
 .del{background:none;border:none;color:var(--rd);cursor:pointer;font-size:22px;padding:5px;line-height:1}
 .ab{display:flex;align-items:center;gap:4px;color:var(--bl);background:none;border:1.5px dashed var(--bl);border-radius:7px;padding:10px 12px;font-size:15px;cursor:pointer;width:100%;justify-content:center;margin-top:5px}
 .ch3{display:grid;grid-template-columns:1fr 110px 36px;gap:6px;margin-bottom:5px}
 .ch4{display:grid;grid-template-columns:1fr 72px 88px 36px;gap:6px;margin-bottom:5px}
-.ch3 span,.ch4 span{font-size:14px;color:var(--gy);text-align:center;font-weight:600;padding-bottom:3px}
+.ch3 span,.ch4 span{font-size:14px;color:var(--gy);text-align:center;font-weight:600;padding:4px 2px 5px;display:block}
 .ch3 span:first-child,.ch4 span:first-child{text-align:left;font-weight:600;font-size:14px}
 /* 法定福利費（事業者） */
 .fkw{background:#fff;margin:6px 10px;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08);border:2px solid var(--rd)}
@@ -654,10 +654,10 @@ function addRow(cat,hasQty,name,qty,price){
   const isL=(cat==='labor');
   if(hasQty){
     d.className='ir4';
-    d.innerHTML=`<input type="text" class="n" placeholder="${isL?'例: 塗装工（外壁）':'項目名・規格'}" value="${name||''}" oninput="render()"><input type="number" class="q" placeholder="数量" value="${qty||''}" oninput="calcRowAmt(${id})"><input type="number" class="p${isL?' lhi':''}" placeholder="単価" value="${price||''}" oninput="calcRowAmt(${id})"><button class="del" onclick="delRow('${cat}',${id})">✕</button>`;
+    d.innerHTML=`<input type="text" class="n" placeholder="${isL?'例: 塗装工（外壁）':'項目名・規格'}" value="${name||''}" oninput="render()" style="font-size:17px;padding:14px 12px;min-height:50px;border:1px solid #ccc;border-radius:8px;width:100%"><input type="number" class="q" placeholder="数量" value="${qty||''}" oninput="calcRowAmt(${id})" style="font-size:17px;padding:14px 8px;min-height:50px;border:1px solid #ccc;border-radius:8px;width:100%"><input type="number" class="p${isL?' lhi':''}" placeholder="単価" value="${price||''}" oninput="calcRowAmt(${id})" style="font-size:17px;padding:14px 8px;min-height:50px;border:1px solid #ccc;border-radius:8px;width:100%;${isL?'background:#fefce8':''}"><button class="del" onclick="delRow('${cat}',${id})" style="font-size:24px;padding:6px;background:none;border:none;color:#c0392b;cursor:pointer;min-height:50px">✕</button>`;
   } else {
     d.className='ir3';
-    d.innerHTML=`<input type="text" class="n" placeholder="項目名" value="${name||''}" oninput="render()"><input type="number" class="a" placeholder="0" value="${price||0}" inputmode="numeric" oninput="render()"><button class="del" onclick="delRow('${cat}',${id})">✕</button>`;
+    d.innerHTML=`<input type="text" class="n" placeholder="項目名" value="${name||''}" oninput="render()" style="font-size:17px;padding:14px 12px;min-height:50px;border:1px solid #ccc;border-radius:8px;width:100%"><input type="number" class="a" placeholder="0" value="${price||0}" inputmode="numeric" oninput="render()" style="font-size:17px;padding:14px 8px;min-height:50px;border:1px solid #ccc;border-radius:8px;width:100%"><button class="del" onclick="delRow('${cat}',${id})" style="font-size:24px;padding:6px;background:none;border:none;color:#c0392b;cursor:pointer;min-height:50px">✕</button>`;
   }
   c.appendChild(d); render();
 }
