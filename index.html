@@ -7,27 +7,27 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bl:#1a5276;--bll:#eaf2f8;--blm:#d6eaf8;--rd:#c0392b;--rl:#fff3f3;--gn:#1e8449;--gl:#eafaf1;--am:#b7770d;--al:#fef9e7;--gy:#555;--bd:#ccc;--bg:#f0f4f8}
-body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(--bg);font-size:14px;color:#1a1a1a;min-height:100vh}
+body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(--bg);font-size:16px;color:#1a1a1a;min-height:100vh}
 /* ヘッダー */
 .hdr{background:var(--bl);color:#fff;padding:10px 14px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
 .hdr-r{display:flex;align-items:center;gap:8px}
-.hdr h1{font-size:15px;font-weight:700;flex:1}
+.hdr h1{font-size:17px;font-weight:700;flex:1}
 .bk{background:rgba(255,255,255,.2);border-radius:10px;padding:2px 8px;font-size:10px}
 /* モード切替 */
 .mode-bar{display:flex;margin:8px 10px;gap:6px}
-.mode-btn{flex:1;padding:10px;border-radius:10px;border:2px solid var(--bd);background:#fff;font-size:13px;font-weight:700;cursor:pointer;text-align:center;transition:.2s;color:var(--gy)}
+.mode-btn{flex:1;padding:12px;border-radius:10px;border:2px solid var(--bd);background:#fff;font-size:14px;font-weight:700;cursor:pointer;text-align:center;transition:.2s;color:var(--gy)}
 .mode-btn.on{border-color:var(--bl);background:var(--bl);color:#fff}
 .mode-btn.on.oya{border-color:var(--gn);background:var(--gn)}
 /* バナー */
 .banner{background:#fff;border-left:4px solid var(--bl);margin:0 10px 8px;border-radius:0 8px 8px 0;padding:10px 13px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .banner.oya{border-left-color:var(--gn)}
-.banner h2{font-size:13px;font-weight:700;margin-bottom:4px}
+.banner h2{font-size:15px;font-weight:700;margin-bottom:4px}
 .banner h2.blue{color:var(--bl)}.banner h2.green{color:var(--gn)}
-.banner p{font-size:11.5px;color:#444;line-height:1.7;margin-bottom:5px}
-.ln{padding:6px 9px;background:#fef9e7;border:1px solid #f9e79f;border-radius:6px;font-size:11px;color:#7d6608;line-height:1.6}
+.banner p{font-size:13px;color:#444;line-height:1.7;margin-bottom:5px}
+.ln{padding:8px 11px;background:#fef9e7;border:1px solid #f9e79f;border-radius:6px;font-size:13px;color:#7d6608;line-height:1.7}
 /* 保存バー */
 .sbar{display:flex;gap:5px;padding:7px 10px;background:#fff;border-bottom:1px solid var(--bd);position:sticky;top:48px;z-index:98;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.sbar button{flex:1;padding:7px 4px;border-radius:7px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid var(--bd);background:#fff;display:flex;align-items:center;justify-content:center;gap:3px}
+.sbar button{flex:1;padding:9px 4px;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--bd);background:#fff;display:flex;align-items:center;justify-content:center;gap:3px}
 .bs{background:var(--gn)!important;color:#fff!important;border-color:var(--gn)!important}
 .bl2{color:var(--bl)!important;border-color:var(--bl)!important}
 .ba{color:var(--am)!important;border-color:var(--am)!important}
@@ -35,27 +35,27 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 .sbar button:active{opacity:.8;transform:scale(.97)}
 /* 書類タブ */
 .dtab{display:flex;background:#fff;border-bottom:2px solid var(--bd)}
-.dt{flex:1;padding:9px;text-align:center;font-size:13px;font-weight:500;cursor:pointer;color:var(--gy);border-bottom:3px solid transparent;margin-bottom:-2px}
+.dt{flex:1;padding:11px;text-align:center;font-size:15px;font-weight:500;cursor:pointer;color:var(--gy);border-bottom:3px solid transparent;margin-bottom:-2px}
 .dt.on{color:var(--bl);border-bottom-color:var(--bl)}
 /* 合計バー */
 .tbar{color:#fff;margin:8px 10px;border-radius:10px;padding:12px 14px;box-shadow:0 2px 6px rgba(0,0,0,.2)}
 .tbar.blue{background:var(--bl)}.tbar.green{background:var(--gn)}
 .tbar .tl{font-size:11px;opacity:.85;margin-bottom:3px}
-.tbar .ta{font-size:26px;font-weight:900;letter-spacing:1px}
+.tbar .ta{font-size:30px;font-weight:900;letter-spacing:1px}
 .tbk{display:grid;gap:5px;margin-top:8px}
 .tbk3{grid-template-columns:1fr 1fr 1fr}.tbk4{grid-template-columns:1fr 1fr 1fr 1fr}
 .ti{background:rgba(255,255,255,.15);border-radius:6px;padding:5px 7px;text-align:center}
-.ti .tit{font-size:9px;opacity:.8}.ti .tiv{font-size:11px;font-weight:600;margin-top:1px}
+.ti .tit{font-size:11px;opacity:.8}.ti .tiv{font-size:13px;font-weight:600;margin-top:1px}
 /* セクション */
 .sec{background:#fff;margin:6px 10px;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)}
-.sh{color:#fff;padding:8px 12px;font-size:12px;font-weight:500;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+.sh{color:#fff;padding:10px 14px;font-size:14px;font-weight:500;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
 .sh.blue{background:var(--bl)}.sh.green{background:var(--gn)}.sh.amber{background:var(--am)}
 .sh.red{background:#922b21}.sh.gray{background:#5d6d7e}.sh.teal{background:#117a65}
 .sh.purple{background:#6c3483}
 .sb2{padding:11px 13px}
 .sb2.hide{display:none}
 /* 説明ボックス */
-.db{border-radius:7px;padding:8px 11px;margin-bottom:9px;font-size:11.5px;line-height:1.7}
+.db{border-radius:7px;padding:10px 13px;margin-bottom:10px;font-size:13px;line-height:1.8}
 .db.blue{background:var(--bll);border-left:3px solid var(--bl);color:#154360}
 .db.green{background:var(--gl);border-left:3px solid var(--gn);color:#145a32}
 .db.amber{background:var(--al);border-left:3px solid var(--am);color:#7d5a00}
@@ -65,48 +65,48 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 .db ul{padding-left:15px;margin-top:3px}.db li{margin-bottom:2px}
 /* フォーム */
 .f{margin-bottom:9px}
-.f label{display:block;font-size:11px;color:var(--gy);margin-bottom:2px;font-weight:500}
-.f input,.f select,.f textarea{width:100%;padding:8px 10px;border:1px solid var(--bd);border-radius:7px;font-size:14px;font-family:inherit;color:#1a1a1a;background:#fff;-webkit-appearance:none;appearance:none}
+.f label{display:block;font-size:13px;color:var(--gy);margin-bottom:3px;font-weight:500}
+.f input,.f select,.f textarea{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:7px;font-size:16px;font-family:inherit;color:#1a1a1a;background:#fff;-webkit-appearance:none;appearance:none}
 .f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--bl);box-shadow:0 0 0 3px rgba(26,82,118,.1)}
 .f textarea{height:44px;resize:vertical}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 /* 明細行 */
 .ir3{display:grid;grid-template-columns:1fr 88px 28px;gap:4px;margin-bottom:5px;align-items:center}
 .ir4{display:grid;grid-template-columns:1fr 60px 70px 28px;gap:4px;margin-bottom:5px;align-items:center}
-.ir input{padding:7px 8px;border:1px solid var(--bd);border-radius:6px;font-size:12px;font-family:inherit;color:#1a1a1a;background:#fff;width:100%}
+.ir input{padding:9px 8px;border:1px solid var(--bd);border-radius:6px;font-size:14px;font-family:inherit;color:#1a1a1a;background:#fff;width:100%}
 .ir input.lhi{background:#fefce8}
 .ir input.ro{background:#f5f5f5;color:#888}
 .del{background:none;border:none;color:var(--rd);cursor:pointer;font-size:17px;padding:3px;line-height:1}
-.ab{display:flex;align-items:center;gap:4px;color:var(--bl);background:none;border:1.5px dashed var(--bl);border-radius:7px;padding:7px 12px;font-size:13px;cursor:pointer;width:100%;justify-content:center;margin-top:3px}
+.ab{display:flex;align-items:center;gap:4px;color:var(--bl);background:none;border:1.5px dashed var(--bl);border-radius:7px;padding:10px 12px;font-size:15px;cursor:pointer;width:100%;justify-content:center;margin-top:5px}
 .ch3{display:grid;grid-template-columns:1fr 88px 28px;gap:4px;margin-bottom:3px}
 .ch4{display:grid;grid-template-columns:1fr 60px 70px 28px;gap:4px;margin-bottom:3px}
-.ch3 span,.ch4 span{font-size:10px;color:var(--gy);text-align:center}
+.ch3 span,.ch4 span{font-size:12px;color:var(--gy);text-align:center}
 .ch3 span:first-child,.ch4 span:first-child{text-align:left}
 /* 法定福利費（事業者） */
 .fkw{background:#fff;margin:6px 10px;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08);border:2px solid var(--rd)}
-.fkh{background:var(--rd);color:#fff;padding:8px 12px;font-size:12px;font-weight:500;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+.fkh{background:var(--rd);color:#fff;padding:10px 14px;font-size:14px;font-weight:500;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
 .fkb{padding:11px 13px}
 .rg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:7px}
 .ri{background:#fff8f8;border:1px solid #f5b7b1;border-radius:7px;padding:8px 10px}
-.ri label{display:block;font-size:10px;color:var(--rd);font-weight:500;margin-bottom:1px}
-.ri .rd{font-size:9px;color:#888;margin-bottom:4px;line-height:1.4}
-.ri input{width:100%;padding:5px 8px;border:1px solid #f5b7b1;border-radius:5px;font-size:13px;font-family:inherit;color:#1a1a1a;background:#fff;-webkit-appearance:none}
+.ri label{display:block;font-size:12px;color:var(--rd);font-weight:500;margin-bottom:2px}
+.ri .rd{font-size:11px;color:#888;margin-bottom:4px;line-height:1.4}
+.ri input{width:100%;padding:7px 8px;border:1px solid #f5b7b1;border-radius:5px;font-size:15px;font-family:inherit;color:#1a1a1a;background:#fff;-webkit-appearance:none}
 .fkt{background:var(--rl);border:1.5px solid #f5c6c6;border-radius:7px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;margin-top:4px}
-.fkt .fkv{font-size:18px;font-weight:700;color:var(--rd)}
-.rtr{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #f5c6c6;border-radius:6px;padding:5px 10px;margin-bottom:6px;font-size:11px}
+.fkt .fkv{font-size:20px;font-weight:700;color:var(--rd)}
+.rtr{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #f5c6c6;border-radius:6px;padding:7px 10px;margin-bottom:6px;font-size:13px}
 /* 法定福利費（一人親方相当） */
 .oyafw{background:#fff;margin:6px 10px;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08);border:2px solid var(--gn)}
-.oyafh{background:var(--gn);color:#fff;padding:8px 12px;font-size:12px;font-weight:500;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+.oyafh{background:var(--gn);color:#fff;padding:10px 14px;font-size:14px;font-weight:500;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
 .oyafb{padding:11px 13px}
 .oyari{background:#f0fff4;border:1px solid #a9dfbf;border-radius:7px;padding:8px 10px;margin-bottom:6px}
-.oyari label{display:block;font-size:10px;color:var(--gn);font-weight:500;margin-bottom:2px}
-.oyari .rd{font-size:9px;color:#888;margin-bottom:4px;line-height:1.4}
-.oyari input{width:100%;padding:5px 8px;border:1px solid #a9dfbf;border-radius:5px;font-size:13px;font-family:inherit;color:#1a1a1a;background:#fff;-webkit-appearance:none}
+.oyari label{display:block;font-size:12px;color:var(--gn);font-weight:500;margin-bottom:2px}
+.oyari .rd{font-size:11px;color:#888;margin-bottom:4px;line-height:1.4}
+.oyari input{width:100%;padding:7px 8px;border:1px solid #a9dfbf;border-radius:5px;font-size:15px;font-family:inherit;color:#1a1a1a;background:#fff;-webkit-appearance:none}
 .oyafkt{background:#f0fff4;border:1.5px solid #a9dfbf;border-radius:7px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;margin-top:4px}
 .oyafkt .fkv{font-size:16px;font-weight:700;color:var(--gn)}
 /* 印刷 */
 .pw{padding:10px;margin-bottom:16px}
-.pb{width:100%;padding:13px;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 3px 8px rgba(0,0,0,.2)}
+.pb{width:100%;padding:16px;color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 3px 8px rgba(0,0,0,.2)}
 .pb.blue{background:var(--bl)}.pb.green{background:var(--gn)}
 .pb:active{opacity:.85;transform:scale(.98)}
 .ph{text-align:center;font-size:11px;color:var(--gy);margin-top:5px}
@@ -114,7 +114,7 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 .stt.show{display:flex}
 .toast{position:fixed;bottom:68px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:9px 18px;border-radius:18px;font-size:12px;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1}
-.tip{font-size:10px;color:#888;margin-top:3px;line-height:1.5}
+.tip{font-size:12px;color:#888;margin-top:4px;line-height:1.5}
 /* 印刷CSS */
 @media print{
   @page{size:A4;margin:0}
@@ -190,8 +190,8 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 
 <!-- モード切替 -->
 <div class="mode-bar">
-  <div class="mode-btn on" id="modeJigyoBtn" onclick="setMode('jigyo')">🏢 事業者用<br><span style="font-size:10px;font-weight:400">（埼玉土建上尾伊奈支部版）</span></div>
-  <div class="mode-btn" id="modeOyaBtn" onclick="setMode('oya')">👤 一人親方用<br><span style="font-size:10px;font-weight:400">（埼玉土建上尾伊奈支部版）</span></div>
+  <div class="mode-btn on" id="modeJigyoBtn" onclick="setMode('jigyo')">🏢 事業者用<br><span style="font-size:12px;font-weight:400">（埼玉土建上尾伊奈支部版）</span></div>
+  <div class="mode-btn" id="modeOyaBtn" onclick="setMode('oya')">👤 一人親方用<br><span style="font-size:12px;font-weight:400">（埼玉土建上尾伊奈支部版）</span></div>
 </div>
 
 <!-- バナー -->
@@ -715,6 +715,11 @@ function render(){
 
 function renderJigyo(){
   const matS=cs('mat',true),laborS=cs('labor',true),otherS=cs('other',false);
+  // 安全衛生経費②経費率分を労務費変動時に再計算
+  const a1=nv('anzen1'),anzenRate2=nv('anzenRate');
+  const anzen2recalc=Math.round(laborS*anzenRate2/100);
+  const anzenTotalRecalc=a1+anzen2recalc;
+  if(nv('anzen2')!==anzen2recalc){sv('anzen2',anzen2recalc);sv('anzenTotal',anzenTotalRecalc);}
   const ktkAmt=nv('ktkAmt'),anzenAmt=nv('anzenTotal'),shoS=cs('sho',false);
   document.getElementById('matS').textContent='¥'+fmt(matS);
   document.getElementById('laborS').textContent='¥'+fmt(laborS);
