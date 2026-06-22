@@ -78,8 +78,8 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 .ir input.ro{background:#f5f5f5!important;color:#666!important;font-size:17px!important;padding:14px 12px!important}
 .del{background:none;border:none;color:var(--rd);cursor:pointer;font-size:22px;padding:5px;line-height:1}
 .ab{display:flex;align-items:center;gap:4px;color:var(--bl);background:none;border:1.5px dashed var(--bl);border-radius:7px;padding:10px 12px;font-size:15px;cursor:pointer;width:100%;justify-content:center;margin-top:5px}
-.ch3{display:grid;grid-template-columns:1fr 110px 36px;gap:6px;margin-bottom:5px}
-.ch4{display:grid;grid-template-columns:1fr 72px 88px 36px;gap:6px;margin-bottom:5px}
+.ch3{display:none}
+.ch4{display:none}
 .ch3 span,.ch4 span{font-size:14px;color:var(--gy);text-align:center;font-weight:600;padding:4px 2px 5px;display:block}
 .ch3 span:first-child,.ch4 span:first-child{text-align:left;font-weight:600;font-size:14px}
 /* 法定福利費（事業者） */
@@ -651,13 +651,45 @@ function addRow(cat,hasQty,name,qty,price){
   const c=document.getElementById(cat+'-r');
   const d=document.createElement('div');
   d.id='r'+id;
+  d.style.cssText='background:#f9f9f9;border:1px solid #ddd;border-radius:10px;padding:12px 12px 8px;margin-bottom:12px';
   const isL=(cat==='labor');
+  const INP='width:100%;font-size:18px;padding:13px 12px;border:1.5px solid #bbb;border-radius:8px;font-family:inherit;color:#1a1a1a;background:#fff;box-sizing:border-box;display:block;margin-bottom:8px;-webkit-appearance:none;appearance:none';
+  const LBL='display:block;font-size:13px;color:#555;font-weight:600;margin-bottom:4px';
+  const LHIBG='background:#fefce8';
   if(hasQty){
-    d.className='ir4';
-    d.innerHTML=`<input type="text" class="n" placeholder="${isL?'例: 塗装工（外壁）':'項目名・規格'}" value="${name||''}" oninput="render()" style="font-size:17px;padding:14px 12px;min-height:50px;border:1px solid #ccc;border-radius:8px;width:100%"><input type="number" class="q" placeholder="数量" value="${qty||''}" oninput="calcRowAmt(${id})" style="font-size:17px;padding:14px 8px;min-height:50px;border:1px solid #ccc;border-radius:8px;width:100%"><input type="number" class="p${isL?' lhi':''}" placeholder="単価" value="${price||''}" oninput="calcRowAmt(${id})" style="font-size:17px;padding:14px 8px;min-height:50px;border:1px solid #ccc;border-radius:8px;width:100%;${isL?'background:#fefce8':''}"><button class="del" onclick="delRow('${cat}',${id})" style="font-size:24px;padding:6px;background:none;border:none;color:#c0392b;cursor:pointer;min-height:50px">✕</button>`;
+    d.innerHTML=`
+      <div>
+        <span style="${LBL}">${isL?'職種・作業内容':'項目名・規格'}</span>
+        <input type="text" class="n" placeholder="${isL?'例: 塗装工（外壁）10人工':'例: 外壁塗料・副資材'}" value="${name||''}" oninput="render()" style="${INP}">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px">
+        <div>
+          <span style="${LBL}">数量</span>
+          <input type="number" class="q" placeholder="例: 10" value="${qty||''}" oninput="calcRowAmt(${id})" style="${INP}margin-bottom:0">
+        </div>
+        <div>
+          <span style="${LBL}">単価（円）</span>
+          <input type="number" class="p" placeholder="例: 33000" value="${price||''}" oninput="calcRowAmt(${id})" style="${INP}margin-bottom:0;${isL?LHIBG:''}">
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;align-items:center;margin-top:4px">
+        <span style="font-size:13px;color:#555;margin-right:8px">小計：</span>
+        <span class="row-amt" id="amt-${id}" style="font-size:16px;font-weight:700;color:#1a5276;margin-right:12px">¥0</span>
+        <button onclick="delRow('${cat}',${id})" style="background:#fff;border:1.5px solid #c0392b;color:#c0392b;border-radius:6px;padding:6px 14px;font-size:14px;cursor:pointer;font-weight:600">削除</button>
+      </div>`;
   } else {
-    d.className='ir3';
-    d.innerHTML=`<input type="text" class="n" placeholder="項目名" value="${name||''}" oninput="render()" style="font-size:17px;padding:14px 12px;min-height:50px;border:1px solid #ccc;border-radius:8px;width:100%"><input type="number" class="a" placeholder="0" value="${price||0}" inputmode="numeric" oninput="render()" style="font-size:17px;padding:14px 8px;min-height:50px;border:1px solid #ccc;border-radius:8px;width:100%"><button class="del" onclick="delRow('${cat}',${id})" style="font-size:24px;padding:6px;background:none;border:none;color:#c0392b;cursor:pointer;min-height:50px">✕</button>`;
+    d.innerHTML=`
+      <div>
+        <span style="${LBL}">項目名</span>
+        <input type="text" class="n" placeholder="例: 現場管理費" value="${name||''}" oninput="render()" style="${INP}">
+      </div>
+      <div>
+        <span style="${LBL}">金額（円）</span>
+        <input type="number" class="a" placeholder="例: 50000" value="${price||0}" inputmode="numeric" oninput="render()" style="${INP}">
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:4px">
+        <button onclick="delRow('${cat}',${id})" style="background:#fff;border:1.5px solid #c0392b;color:#c0392b;border-radius:6px;padding:6px 14px;font-size:14px;cursor:pointer;font-weight:600">削除</button>
+      </div>`;
   }
   c.appendChild(d); render();
 }
@@ -666,6 +698,9 @@ function calcRowAmt(id){
   const el=document.getElementById('r'+id); if(!el) return;
   const q=parseFloat(el.querySelector('.q')?.value)||0;
   const p=parseFloat(el.querySelector('.p')?.value)||0;
+  const amt=Math.round(q*p);
+  const amtEl=document.getElementById('amt-'+id);
+  if(amtEl) amtEl.textContent='¥'+amt.toLocaleString('ja-JP');
   render();
 }
 
