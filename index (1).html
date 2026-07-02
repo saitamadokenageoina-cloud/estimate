@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>標準見積書｜埼玉土建上尾伊奈支部</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bl:#1a5276;--bll:#eaf2f8;--blm:#d6eaf8;--rd:#c0392b;--rl:#fff3f3;--gn:#1e8449;--gl:#eafaf1;--am:#b7770d;--al:#fef9e7;--gy:#555;--bd:#ccc;--bg:#f0f4f8}
+body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(--bg);font-size:16px;color:#1a1a1a;min-height:100vh}
+/* ヘッダー */
+.hdr{background:var(--bl);color:#fff;padding:10px 14px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.hdr-r{display:flex;align-items:center;gap:8px}
+.hdr h1{font-size:17px;font-weight:700;flex:1}
+.bk{background:rgba(255,255,255,.2);border-radius:10px;padding:2px 8px;font-size:10px}
+/* モード切替 */
+.mode-bar{display:flex;margin:8px 10px;gap:6px}
+.mode-btn{flex:1;padding:12px;border-radius:10px;border:2px solid var(--bd);background:#fff;font-size:14px;font-weight:700;cursor:pointer;text-align:center;transition:.2s;color:var(--gy)}
+.mode-btn.on{border-color:var(--bl);background:var(--bl);color:#fff}
+.mode-btn.on.oya{border-color:var(--gn);background:var(--gn)}
+/* バナー */
+.banner{background:#fff;border-left:4px solid var(--bl);margin:0 10px 8px;border-radius:0 8px 8px 0;padding:10px 13px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.banner.oya{border-left-color:var(--gn)}
+.banner h2{font-size:15px;font-weight:700;margin-bottom:4px}
+.banner h2.blue{color:var(--bl)}.banner h2.green{color:var(--gn)}
+.banner p{font-size:13px;color:#444;line-height:1.7;margin-bottom:5px}
+.ln{padding:8px 11px;background:#fef9e7;border:1px solid #f9e79f;border-radius:6px;font-size:13px;color:#7d6608;line-height:1.7}
+/* 保存バー */
+.sbar{display:flex;gap:5px;padding:7px 10px;background:#fff;border-bottom:1px solid var(--bd);position:sticky;top:48px;z-index:98;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.sbar button{flex:1;padding:9px 4px;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--bd);background:#fff;display:flex;align-items:center;justify-content:center;gap:3px}
+.bs{background:var(--gn)!important;color:#fff!important;border-color:var(--gn)!important}
+.bl2{color:var(--bl)!important;border-color:var(--bl)!important}
+.ba{color:var(--am)!important;border-color:var(--am)!important}
+.br{color:var(--rd)!important;border-color:var(--rd)!important}
+.sbar button:active{opacity:.8;transform:scale(.97)}
+/* 書類タブ */
+.dtab{display:flex;background:#fff;border-bottom:2px solid var(--bd)}
+.dt{flex:1;padding:11px;text-align:center;font-size:15px;font-weight:500;cursor:pointer;color:var(--gy);border-bottom:3px solid transparent;margin-bottom:-2px}
+.dt.on{color:var(--bl);border-bottom-color:var(--bl)}
+/* 合計バー */
+.tbar{color:#fff;margin:8px 10px;border-radius:10px;padding:12px 14px;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.tbar.blue{background:var(--bl)}.tbar.green{background:var(--gn)}
+.tbar .tl{font-size:11px;opacity:.85;margin-bottom:3px}
+.tbar .ta{font-size:30px;font-weight:900;letter-spacing:1px}
+.tbk{display:grid;gap:5px;margin-top:8px}
+.tbk3{grid-template-columns:1fr 1fr 1fr}.tbk4{grid-template-columns:1fr 1fr 1fr 1fr}
+.ti{background:rgba(255,255,255,.15);border-radius:6px;padding:5px 7px;text-align:center}
+.ti .tit{font-size:11px;opacity:.8}.ti .tiv{font-size:13px;font-weight:600;margin-top:1px}
+/* セクション */
+.sec{background:#fff;margin:6px 10px;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.sh{color:#fff;padding:10px 14px;font-size:14px;font-weight:500;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+.sh.blue{background:var(--bl)}.sh.green{background:var(--gn)}.sh.amber{background:var(--am)}
+.sh.red{background:#922b21}.sh.gray{background:#5d6d7e}.sh.teal{background:#117a65}
+.sh.purple{background:#6c3483}
+.sb2{padding:14px 14px}
+.sb2.hide{display:none}
+/* 説明ボックス */
+.db{border-radius:7px;padding:10px 13px;margin-bottom:10px;font-size:13px;line-height:1.8}
+.db.blue{background:var(--bll);border-left:3px solid var(--bl);color:#154360}
+.db.green{background:var(--gl);border-left:3px solid var(--gn);color:#145a32}
+.db.amber{background:var(--al);border-left:3px solid var(--am);color:#7d5a00}
+.db.red{background:var(--rl);border-left:3px solid var(--rd);color:#7b241c}
+.db.teal{background:#e8f8f5;border-left:3px solid #117a65;color:#0e6655}
+.db strong{display:block;font-size:12px;font-weight:700;margin-bottom:3px}
+.db ul{padding-left:15px;margin-top:3px}.db li{margin-bottom:2px}
+/* フォーム */
+.f{margin-bottom:9px}
+.f label{display:block;font-size:13px;color:var(--gy);margin-bottom:3px;font-weight:500}
+.f input,.f select,.f textarea{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:7px;font-size:16px;font-family:inherit;color:#1a1a1a;background:#fff;-webkit-appearance:none;appearance:none}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--bl);box-shadow:0 0 0 3px rgba(26,82,118,.1)}
+.f textarea{height:44px;resize:vertical}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+/* 明細行 */
+.ir3{display:grid;grid-template-columns:1fr 110px 36px;gap:6px;margin-bottom:10px;align-items:center}
+.ir4{display:grid;grid-template-columns:1fr 72px 88px 36px;gap:6px;margin-bottom:10px;align-items:center}
+.ir input{padding:14px 12px!important;border:1px solid var(--bd)!important;border-radius:8px!important;font-size:17px!important;font-family:inherit!important;color:#1a1a1a!important;background:#fff!important;width:100%!important;min-height:50px!important}
+.ir input.lhi{background:#fefce8!important;font-size:17px!important;padding:14px 12px!important}
+.ir input.ro{background:#f5f5f5!important;color:#666!important;font-size:17px!important;padding:14px 12px!important}
+.del{background:none;border:none;color:var(--rd);cursor:pointer;font-size:22px;padding:5px;line-height:1}
+.ab{display:flex;align-items:center;gap:4px;color:var(--bl);background:none;border:1.5px dashed var(--bl);border-radius:7px;padding:10px 12px;font-size:15px;cursor:pointer;width:100%;justify-content:center;margin-top:5px}
+.ch3{display:none}
+.ch4{display:none}
+.ch3 span,.ch4 span{font-size:14px;color:var(--gy);text-align:center;font-weight:600;padding:4px 2px 5px;display:block}
+.ch3 span:first-child,.ch4 span:first-child{text-align:left;font-weight:600;font-size:14px}
+/* 法定福利費（事業者） */
+.fkw{background:#fff;margin:6px 10px;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08);border:2px solid var(--rd)}
+.fkh{background:var(--rd);color:#fff;padding:10px 14px;font-size:14px;font-weight:500;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+.fkb{padding:11px 13px}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:7px}
+.ri{background:#fff8f8;border:1px solid #f5b7b1;border-radius:7px;padding:8px 10px}
+.ri label{display:block;font-size:12px;color:var(--rd);font-weight:500;margin-bottom:2px}
+.ri .rd{font-size:11px;color:#888;margin-bottom:4px;line-height:1.4}
+.ri input{width:100%;padding:7px 8px;border:1px solid #f5b7b1;border-radius:5px;font-size:15px;font-family:inherit;color:#1a1a1a;background:#fff;-webkit-appearance:none}
+.fkt{background:var(--rl);border:1.5px solid #f5c6c6;border-radius:7px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;margin-top:4px}
+.fkt .fkv{font-size:20px;font-weight:700;color:var(--rd)}
+.rtr{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #f5c6c6;border-radius:6px;padding:7px 10px;margin-bottom:6px;font-size:13px}
+/* 法定福利費（一人親方相当） */
+.oyafw{background:#fff;margin:6px 10px;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08);border:2px solid var(--gn)}
+.oyafh{background:var(--gn);color:#fff;padding:10px 14px;font-size:14px;font-weight:500;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+.oyafb{padding:11px 13px}
+.oyari{background:#f0fff4;border:1px solid #a9dfbf;border-radius:7px;padding:8px 10px;margin-bottom:6px}
+.oyari label{display:block;font-size:12px;color:var(--gn);font-weight:500;margin-bottom:2px}
+.oyari .rd{font-size:11px;color:#888;margin-bottom:4px;line-height:1.4}
+.oyari input{width:100%;padding:7px 8px;border:1px solid #a9dfbf;border-radius:5px;font-size:15px;font-family:inherit;color:#1a1a1a;background:#fff;-webkit-appearance:none}
+.oyafkt{background:#f0fff4;border:1.5px solid #a9dfbf;border-radius:7px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;margin-top:4px}
+.oyafkt .fkv{font-size:16px;font-weight:700;color:var(--gn)}
+/* 印刷 */
+.pw{padding:10px;margin-bottom:16px}
+.pb{width:100%;padding:16px;color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 3px 8px rgba(0,0,0,.2)}
+.pb.blue{background:var(--bl)}.pb.green{background:var(--gn)}
+.pb.preview{background:#117a65}
+/* プレビューモーダル */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:500;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.modal-overlay.show{display:block}
+.modal-inner{background:#e8e8e8;min-height:100%;padding:12px 8px 30px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.modal-header{width:100%;max-width:620px;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#1a5276;color:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.modal-header.gn{background:#1e8449}
+.modal-header h2{font-size:15px;font-weight:700}
+.modal-close{background:rgba(255,255,255,.2);border:none;color:#fff;font-size:22px;cursor:pointer;padding:4px 12px;border-radius:7px;font-weight:700}
+.modal-close:active{opacity:.7}
+.modal-page-label{width:100%;max-width:620px;font-size:13px;color:#444;font-weight:600;padding-left:4px}
+.modal-sheet{width:100%;max-width:620px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.25);border-radius:4px;overflow:hidden}
+.modal-print-btn{width:100%;max-width:620px;padding:14px;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 3px 8px rgba(0,0,0,.2)}
+.modal-print-btn.blue{background:#1a5276}
+.modal-print-btn.gn{background:#1e8449}
+.pb:active{opacity:.85;transform:scale(.98)}
+.ph{text-align:center;font-size:11px;color:var(--gy);margin-top:5px}
+.stt{position:fixed;bottom:18px;right:14px;background:var(--bl);color:#fff;border:none;border-radius:50%;width:42px;height:42px;font-size:19px;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.25);display:none;align-items:center;justify-content:center;z-index:200}
+.stt.show{display:flex}
+.toast{position:fixed;bottom:68px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:9px 18px;border-radius:18px;font-size:12px;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1}
+.tip{font-size:12px;color:#888;margin-top:4px;line-height:1.5}
+/* 印刷CSS */
+@media print{
+  @page{size:A4;margin:0}
+  html,body{width:210mm}
+  body>*:not(.pra){display:none!important}
+  .pra{display:block!important;width:210mm}
+}
+.pra{display:none}
+.pd{width:210mm;padding:11mm 10mm;page-break-after:always;font-family:'Meiryo','Yu Gothic','MS Gothic',sans-serif;font-size:9pt;color:#1a1a1a;box-sizing:border-box}
+.pd:last-child{page-break-after:auto}
+/* 印刷共通 */
+.pt{font-size:18pt;font-weight:900;letter-spacing:6px;text-align:center;border:2.5px solid #1a5276;padding:6px;color:#1a5276;margin-bottom:4px}
+.pt.gn{border-color:#1e8449;color:#1e8449}
+.psb{text-align:center;font-size:6.5pt;color:#888;margin-bottom:4px}
+.pdn{text-align:right;font-size:7.5pt;color:#666;margin-bottom:5px}
+.pmeta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+.pcn{font-size:12pt;font-weight:700;border-bottom:2px solid #1a5276;padding-bottom:2px;margin-bottom:3px}
+.pcn.gn{border-bottom-color:#1e8449}
+.piss{border:0.5px solid #ccc;padding:6px;font-size:7.5pt;line-height:1.75;text-align:right}
+.pwk{background:#eaf2f8;padding:5px 8px;font-size:7.5pt;margin-bottom:6px}
+.pwk.gn{background:#eafaf1}
+.pwk table{width:100%;border-collapse:collapse}
+.pwk td{padding:1.5px 0}.pwk td:first-child{color:#555;width:70px;font-weight:500}
+.pg{text-align:center;padding:8px;margin-bottom:6px}
+.pg.blue{background:#1a5276;color:#fff}.pg.gn{background:#1e8449;color:#fff}
+.pg .gl{font-size:8.5pt}.pg .ga{font-size:18pt;font-weight:900;margin-left:8px}
+/* 法定福利費別枠 */
+.pfk{border:2px solid #c0392b;padding:6px 9px;margin-bottom:6px}
+.pfk.gn{border-color:#1e8449}
+.pfk table{width:100%;border-collapse:collapse;font-size:8.5pt}
+.pfk td{padding:2.5px 5px}.pfk td:last-child{text-align:right;font-weight:500}
+.fkr{color:#c0392b;font-weight:700}
+.fkr.gn{color:#1e8449}
+.fkbg{display:inline-block;border:0.5px solid #c0392b;color:#c0392b;font-size:6.5pt;padding:0 3px;margin-left:3px}
+.seal{display:inline-block;border:1px solid #aaa;width:44px;height:44px;line-height:42px;text-align:center;font-size:8.5pt;color:#aaa}
+.plaw{margin-top:5px;padding:4px 7px;border:0.5px solid #aed6f1;background:#eaf2f8;font-size:6.5pt;color:#1a5276;line-height:1.5}
+.plaw.gn{border-color:#a9dfbf;background:#eafaf1;color:#1e8449}
+.pfn{margin-top:3px;font-size:6pt;color:#999;line-height:1.5}
+/* 内訳テーブル */
+.ptbl{width:100%;border-collapse:collapse;font-size:8pt;margin-bottom:5px}
+.ptbl th{background:#1a5276;color:#fff;padding:3px 5px;text-align:center;font-weight:500;font-size:7.5pt}
+.ptbl.gn th{background:#1e8449}
+.ptbl td{border:0.5px solid #ccc;padding:2.5px 5px;vertical-align:middle}
+.pcat{background:#d6eaf8;font-weight:600;color:#1a5276;font-size:7.5pt}
+.pcat.gn{background:#d5f5e3;color:#1e8449}
+.pcat2{background:#e8f4fb;font-size:7.5pt;padding-left:10px!important;color:#1a5276}
+.pcat2.gn{background:#eafaf1;color:#1e8449}
+.psub{background:#f5f5f5;padding-left:14px!important;font-size:7.5pt}
+.plbr{background:#fefce8;padding-left:14px!important;font-size:7.5pt}
+.pfkr{background:#fff3f3;color:#c0392b;font-weight:500;font-size:7.5pt}
+.pfkr.gn{background:#eafaf1;color:#1e8449}
+.ptot{background:#e8ecf0;font-weight:600;font-size:8pt}
+.ptot2{background:#dce4ea;font-weight:700;font-size:8.5pt}
+.pgrnd{background:#1a5276;color:#fff;font-weight:700;font-size:9pt}
+.pgrnd.gn{background:#1e8449}
+.tr{text-align:right}.tc{text-align:center}
+.s2n{margin-top:4px;font-size:6.5pt;color:#666;line-height:1.55;border-top:0.5px solid #ddd;padding-top:4px}
+/* 一人親方専用 */
+.req-box{border:1px solid #1e8449;border-radius:7px;padding:8px;margin-bottom:6px;background:#f0fff4}
+.req-box h4{font-size:11px;color:#1e8449;font-weight:700;margin-bottom:5px}
+.req-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:5px}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-r">
+    <div style="font-size:20px">📋</div>
+    <h1>標準見積書作成アプリ</h1>
+    <div class="bk">埼玉土建</div>
+  </div>
+</div>
+
+<!-- モード切替 -->
+<div class="mode-bar">
+  <div class="mode-btn on" id="modeJigyoBtn" onclick="setMode('jigyo')">🏢 事業者用<br><span style="font-size:12px;font-weight:400">（埼玉土建上尾伊奈支部版）</span></div>
+  <div class="mode-btn" id="modeOyaBtn" onclick="setMode('oya')">👤 一人親方用<br><span style="font-size:12px;font-weight:400">（埼玉土建上尾伊奈支部版）</span></div>
+</div>
+
+<!-- バナー -->
+<div class="banner" id="banner">
+  <h2 class="blue" id="bannerTitle">🏢 事業者用 標準見積書（埼玉土建上尾伊奈支部版）</h2>
+  <p id="bannerDesc">建設業法第20条対応。材料費・労務費・法定福利費・建退共掛金・安全衛生経費を内訳明示した標準見積書を作成します。</p>
+  <div class="ln">⚖️ <strong>建設業法第20条：</strong>見積書には材料費・労務費・法定福利費等の内訳明示が義務化（R7.12施行）<br>
+  📎 <a href="https://roumuhi.mlit.go.jp/" target="_blank" style="color:#7d6608">国交省「労務費に関する基準」ポータル →</a></div>
+</div>
+
+<!-- 保存バー -->
+<div class="sbar">
+  <button class="bs" onclick="saveData()">💾 保存</button>
+  <button class="bl2" onclick="openList()">📂 一覧</button>
+  <button class="ba" onclick="dlJSON()">📤 出力</button>
+  <button class="ba" onclick="importJSON()">📥 取込</button>
+  <button class="br" onclick="clearData()">🗑️ クリア</button>
+</div>
+<!-- 隠しinput（ファイル取込用） -->
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="doImport(event)">
+
+<!-- 保存一覧モーダル -->
+<div class="modal-overlay" id="listModal">
+  <div class="modal-inner">
+    <div class="modal-header" id="listModalHeader">
+      <h2>📂 保存データ一覧</h2>
+      <button class="modal-close" onclick="closeList()">✕ 閉じる</button>
+    </div>
+    <div style="width:100%;max-width:620px">
+      <button onclick="saveData();renderList()" style="width:100%;padding:13px;background:#1e8449;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;margin-bottom:10px">
+        💾 現在の内容を新規保存する
+      </button>
+      <div id="listContainer" style="display:flex;flex-direction:column;gap:8px"></div>
+      <div style="margin-top:14px;padding:12px;background:#fff;border-radius:10px;font-size:13px;color:#555;line-height:1.8">
+        <strong>📌 データの保存について</strong><br>
+        ・「💾 保存」→ このスマホ・PCのブラウザに保存<br>
+        ・「📤 出力」→ JSONファイルとしてダウンロード保存（バックアップ用）<br>
+        ・「📥 取込」→ JSONファイルから復元（機種変更・共有時）<br>
+        ・ブラウザのデータを削除すると消えます。重要なデータは必ず「📤 出力」でバックアップを！
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 書類タブ -->
+<div class="dtab">
+  <div class="dt on" onclick="setTab('estimate')">御　見　積　書</div>
+  <div class="dt" onclick="setTab('invoice')">御　請　求　書</div>
+</div>
+
+<!-- 合計バー -->
+<div class="tbar blue" id="tbar">
+  <div class="tl">見積金額（税込）</div>
+  <div class="ta" id="tAmt">¥ 0</div>
+  <div class="tbk tbk3" id="tbrk">
+    <div class="ti"><div class="tit">工事費合計</div><div class="tiv" id="s1">¥0</div></div>
+    <div class="ti"><div class="tit">法定福利費</div><div class="tiv" id="s2">¥0</div></div>
+    <div class="ti"><div class="tit">消費税</div><div class="tiv" id="s3">¥0</div></div>
+  </div>
+</div>
+
+<!-- === 共通：書類情報 === -->
+<div class="sec">
+  <div class="sh blue" onclick="tog(this)">📄 書類情報 <span>▲</span></div>
+  <div class="sb2">
+    <div class="g2">
+      <div class="f"><label>書類番号</label><input type="text" id="docNo" placeholder="例：2024-001" oninput="render()"></div>
+      <div class="f"><label>発行日</label><input type="date" id="docDate" oninput="render()"></div>
+    </div>
+    <div class="g2">
+      <div id="exf" class="f"><label>見積有効期限</label><input type="date" id="expiryDate" oninput="render()"></div>
+      <div id="duf" class="f" style="display:none"><label>支払期限</label><input type="date" id="dueDate" oninput="render()"></div>
+      <div class="f"><label>支払条件</label><input type="text" id="payTerm" placeholder="月末締翌月末払" oninput="render()"></div>
+    </div>
+    <div class="g2">
+      <div class="f"><label>受渡場所</label><input type="text" id="uketori" placeholder="例：現場搬入" oninput="render()"></div>
+      <div class="f"><label>その他</label><input type="text" id="sonota" placeholder="例：材料は支給品" oninput="render()"></div>
+    </div>
+  </div>
+</div>
+<div class="sec">
+  <div class="sh blue" onclick="tog(this)">🏢 宛先（発注者・元請） <span>▲</span></div>
+  <div class="sb2">
+    <div class="f"><label>会社名・お客様名</label><input type="text" id="cName" placeholder="例：株式会社〇〇建設" oninput="render()"></div>
+    <div class="g2">
+      <div class="f"><label>担当者名</label><input type="text" id="cPerson" placeholder="例：山田 太郎" oninput="render()"></div>
+      <div class="f"><label>住所（省略可）</label><input type="text" id="cAddr" placeholder="埼玉県上尾市..." oninput="render()"></div>
+    </div>
+  </div>
+</div>
+<div class="sec">
+  <div class="sh blue" onclick="tog(this)">🔨 発行者情報（自社） <span>▲</span></div>
+  <div class="sb2">
+    <div class="g2">
+      <div class="f"><label>建設業許可番号</label><input type="text" id="licNo" placeholder="埼玉県知事許可（般-〇〇）第〇号" oninput="render()"></div>
+      <div class="f"><label>許可年月日</label><input type="text" id="licDate" placeholder="令和〇年〇月〇日" oninput="render()"></div>
+    </div>
+    <div class="f"><label>会社名・屋号</label><input type="text" id="iName" placeholder="例：〇〇工務店" oninput="render()"></div>
+    <div class="f"><label>住所</label><input type="text" id="iAddr" placeholder="例：〒362-0021 埼玉県上尾市菅谷295" oninput="render()"></div>
+    <div class="g2">
+      <div class="f"><label>電話番号</label><input type="text" id="iTel" placeholder="048-773-9863" oninput="render()"></div>
+      <div class="f"><label>担当者名</label><input type="text" id="iPerson" placeholder="例：鈴木 一郎" oninput="render()"></div>
+    </div>
+    <div id="bkf" class="f" style="display:none"><label>振込先口座</label><input type="text" id="bank" placeholder="〇〇銀行 〇〇支店 普通 1234567" oninput="render()"></div>
+  </div>
+</div>
+<div class="sec">
+  <div class="sh blue" onclick="tog(this)">🏗️ 工事情報 <span>▲</span></div>
+  <div class="sb2">
+    <div class="f"><label>工事名</label><input type="text" id="wTitle" placeholder="例：〇〇邸 外壁塗装工事" oninput="render()"></div>
+    <div class="f"><label>工事場所</label><input type="text" id="wPlace" placeholder="例：埼玉県上尾市〇〇〇丁目〇番〇号" oninput="render()"></div>
+    <div class="g2">
+      <div class="f"><label>工期（自）</label><input type="date" id="wFrom" oninput="render()"></div>
+      <div class="f"><label>工期（至）</label><input type="date" id="wTo" oninput="render()"></div>
+    </div>
+    <div class="tip">⚠️ 工期・休工日の明記は建設業法で義務付けられています</div>
+  </div>
+</div>
+
+<!-- ===== 事業者用エリア ===== -->
+<div id="jigyoArea">
+  <div class="sec">
+    <div class="sh blue" onclick="tog(this)">📦 材料費 <span id="matS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db blue">
+        <strong>📦 材料費とは？</strong>
+        工事施行に直接使用する材料の調達費です。材料名・規格・数量・単価を分けて記入しましょう。材料高騰がある場合は「現時点単価・変動の可能性あり」と備考に記入。
+        <ul><li>塗料・シーリング材・下地材などの塗装材料</li><li>木材・鉄筋・コンクリートなどの建築資材</li><li>配管・電線・タイルなどの設備材料</li></ul>
+      </div>
+      <div class="ch4"><span>項目名・規格</span><span>数量</span><span>単価(円)</span><span></span></div>
+      <div id="mat-r"></div>
+      <button class="ab" onclick="addRow('mat',true)">＋ 材料費を追加する</button>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sh green" onclick="tog(this)">👷 労務費（技能者の賃金） <span id="laborS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db green">
+        <strong>👷 労務費とは？【最重要・標準労務費で計上】</strong>
+        現場の技能労働者の賃金の原資です。<strong>法定福利費（事業主負担分）は含みません</strong>。「感覚」でなく「公共工事設計労務単価×人工数」で正確に計算しましょう。
+        <ul>
+          <li>計算例：設計労務単価33,000円 × 10人工 ＝ 330,000円</li>
+          <li>歩掛計算例：1日50㎡施工 → 660円/㎡（設計単価33,000円÷50㎡）</li>
+        </ul>
+        <div style="margin-top:4px;padding:4px 7px;background:#d5f5e3;border-radius:5px;font-size:10.5px;color:#145a32">
+          💡 <a href="https://roumuhi.mlit.go.jp/labor-cost-standard/search/prefecture/saitama" target="_blank" style="color:#145a32">国交省ポータル（埼玉県）で職種別基準値を確認 →</a>
+        </div>
+      </div>
+      <div class="ch4"><span>職種・作業内容（例：塗装工 10人工）</span><span>数量</span><span>単価(円)</span><span></span></div>
+      <div id="labor-r"></div>
+      <button class="ab" onclick="addRow('labor',true)">＋ 労務費を追加する</button>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sh blue" onclick="tog(this)">🔧 機械等・その他直接費 <span id="otherS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db blue">
+        <strong>🔧 機械等・その他直接費とは？</strong>
+        工事を行うために直接必要な機械・設備の費用です。
+        <ul><li>足場・クレーン・高所作業車のリース代</li><li>コンプレッサー・発電機等の機械使用料</li><li>産業廃棄物処理費用</li></ul>
+      </div>
+      <div class="ch3"><span>項目名</span><span>金額（円）</span><span></span></div>
+      <div id="other-r"></div>
+      <button class="ab" onclick="addRow('other',false)">＋ 追加する</button>
+    </div>
+  </div>
+  <!-- 法定福利費（事業者） -->
+  <div class="fkw">
+    <div class="fkh" onclick="togFk('jigyo')">⚠️ 法定福利費（事業主負担分）<span id="fkRd" style="font-size:11px">合計：16.21%</span><span id="fkArr">▲</span></div>
+    <div class="fkb" id="fkBd">
+      <div class="db red" style="margin-bottom:9px">
+        <strong>⚠️ 法定福利費（事業主負担分）とは？【別枠明示・義務】</strong>
+        雇用保険・健康保険・介護保険・厚生年金・子ども子育て拠出金の<strong>事業主負担分のみ</strong>。技能者の賃金（労務費）をもとに計算します。
+        <ul>
+          <li>土建国保加入の場合：健康保険を「0」にし、国保料事業主負担分を諸経費に計上</li>
+          <li>実際の保険料率を入力してください（令和8年度最新値を設定済み）</li>
+        </ul>
+        <div style="margin-top:4px;padding:4px 7px;background:#fadbd8;border-radius:5px;font-size:10px">
+          📅 <strong>令和8年度最新料率（埼玉県・建設業）自動設定済み</strong>
+        </div>
+      </div>
+      <div class="rg">
+        <div class="ri">
+          <label>① 雇用保険（建設・事業主）%</label>
+          <div class="rd">建設業10.5/1000（R8.4〜）<br>失業等給付6/1000＋二事業4.5/1000</div>
+          <input type="number" id="r1" value="1.05" step="0.01" oninput="render()">
+        </div>
+        <div class="ri">
+          <label>② 健康保険（協会けんぽ埼玉・事業主）%</label>
+          <div class="rd">9.67%÷2＝4.84%（R8.3〜）<br>土建国保の場合は「0」に変更</div>
+          <input type="number" id="r2" value="4.84" step="0.01" oninput="render()">
+        </div>
+        <div class="ri">
+          <label>③ 介護保険（40〜64歳・事業主）%</label>
+          <div class="rd">1.62%÷2＝0.81%（R8.3〜）<br>40歳未満のみの場合は「0」</div>
+          <input type="number" id="r3" value="0.81" step="0.01" oninput="render()">
+        </div>
+        <div class="ri">
+          <label>④ 厚生年金＋子育て拠出金（事業主）%</label>
+          <div class="rd">18.3%÷2＋0.36%（拠出金）<br>子育て支援金0.23%（事業主0.115%）含む</div>
+          <input type="number" id="r4" value="9.51" step="0.01" oninput="render()">
+        </div>
+      </div>
+      <div class="rtr">
+        <span style="color:var(--rd);font-size:11px">合計事業主負担率（40歳未満）</span>
+        <span id="fkRt" style="color:var(--rd);font-weight:700;font-size:14px">16.21%</span>
+      </div>
+      <div class="tip" style="margin-bottom:7px">※40〜64歳が多い場合は介護保険が加わります。実態に合わせて調整を。</div>
+      <div class="fkt">
+        <div style="font-size:12px;color:var(--rd)">法定福利費額（労務費より自動計算）</div>
+        <div class="fkv" id="fkAmt">¥0</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sh amber" onclick="tog(this)">📗 建退共掛金 <span id="ktkS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db amber">
+        <strong>📗 建退共（建設業退職金共済）掛金とは？</strong>
+        受注者や再下請事業者が加入事業者であり、<strong>元請等が証紙等交付事務を受託していない場合のみ計上</strong>します。
+        <ul><li>単価：320円/日（証紙1枚）× 充当日数（人工数）</li><li>例：10人工 × 320円 ＝ 3,200円</li></ul>
+      </div>
+      <div class="f"><label>充当日数（人工数）</label>
+        <input type="number" id="ktkDays" placeholder="0" value="0" oninput="calcKtk()">
+      </div>
+      <div class="f"><label>建退共掛金合計（自動計算：320円/日）</label>
+        <input type="number" id="ktkAmt" class="ro" readonly>
+      </div>
+      <div class="tip">※元請から証紙交付がある場合は計上不要です</div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sh amber" onclick="tog(this)">🦺 安全衛生経費 <span id="anzenS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db amber">
+        <strong>🦺 安全衛生経費とは？</strong>
+        労働安全衛生法等に基づく労働災害防止対策に必要な経費。①個別積み上げ または ②経費率計上 のどちらか（または両方）を選択。
+        <ul><li>①個別積み上げ：保護具・健康診断・熱中症対策費等を個別に積み上げ</li><li>②経費率：労務費×経費率（目安：9%）</li></ul>
+      </div>
+      <div style="margin-bottom:8px">
+        <div class="f"><label>①個別積み上げ合計（円）</label><input type="number" id="anzen1" placeholder="0" value="0" oninput="calcAnzen()"></div>
+        <div class="g2">
+          <div class="f"><label>②労務費×経費率（%）</label><input type="number" id="anzenRate" placeholder="0" value="0" step="0.1" oninput="calcAnzen()"></div>
+          <div class="f"><label>②経費率計上額（自動計算）</label><input type="number" id="anzen2" class="ro" readonly></div>
+        </div>
+        <div class="f"><label>安全衛生経費合計（自動計算）</label><input type="number" id="anzenTotal" class="ro" readonly></div>
+      </div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sh gray" onclick="tog(this)">📊 諸経費（現場管理費・一般管理費等） <span id="shoS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db blue">
+        <strong>📊 諸経費（現場管理費等・一般管理費等）とは？</strong>
+        <ul>
+          <li><strong>現場管理費等：</strong>現場監督人件費・交通費・現場損害保険料・通信費・有給休暇分労務費など</li>
+          <li><strong>一般管理費等：</strong>役員報酬・事務員給与・事務所家賃・光熱費・車両費・利益など</li>
+          <li>法定福利費・建退共・安全衛生経費で計上した経費<strong>以外</strong>を計上。目安：直接工事費の10〜15%</li>
+        </ul>
+      </div>
+      <div class="ch3"><span>項目名（現場管理費等・一般管理費等）</span><span>金額（円）</span><span></span></div>
+      <div id="sho-r"></div>
+      <button class="ab" onclick="addRow('sho',false)">＋ 追加する</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 一人親方用エリア ===== -->
+<div id="oyaArea" style="display:none">
+  <!-- 請求根拠（1日換算） -->
+  <div class="sec">
+    <div class="sh teal" onclick="tog(this)">📅 本現場の就労日数・1日換算 <span>▲</span></div>
+    <div class="sb2">
+      <div class="db teal">
+        <strong>📅 一人親方の見積りの考え方</strong>
+        1日あたりの各費用を積み上げ、就労日数をかけて合計金額を算出します。
+        <ul>
+          <li>労務報酬＋法定福利費相当額の合計が<strong>公共工事設計労務単価を下回らない</strong>ように</li>
+          <li>材料・安全衛生費・建退共・労災保険料・諸経費も積み上げましょう</li>
+        </ul>
+      </div>
+      <div class="f"><label>本現場で働く日数（日）</label>
+        <input type="number" id="oyaDays" placeholder="例：20" value="0" oninput="render()">
+      </div>
+    </div>
+  </div>
+  <!-- 材料費（一人親方） -->
+  <div class="sec">
+    <div class="sh blue" onclick="tog(this)">📦 材料費（本現場に持ち込む材料等） <span id="oyaMatS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db blue">
+        <strong>📦 材料費とは？</strong>
+        本現場に持ち込む材料があれば計上します。材料支給の場合は0円または不要です。細かな釘・金物代などもしっかり計上しましょう。
+      </div>
+      <div class="ch4"><span>項目名・規格</span><span>数量</span><span>単価(円)</span><span></span></div>
+      <div id="oyaMat-r"></div>
+      <button class="ab" onclick="addRow('oyaMat',true)">＋ 材料費を追加する</button>
+    </div>
+  </div>
+  <!-- 労務報酬 -->
+  <div class="sec">
+    <div class="sh green" onclick="tog(this)">👤 労務報酬・労務費（1日あたり） <span id="oyaLaborS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db green">
+        <strong>👤 労務報酬・労務費とは？</strong>
+        1日8時間就労を参考とした単価です。公共工事設計労務単価を参考に設定しましょう。
+        <ul><li>労務報酬＋法定福利費相当額の合計が設計労務単価を下回らないようにする</li><li>CCUSレベル別年収（関東）：レベル1=412〜万円、レベル2=449〜万円</li></ul>
+        <div style="margin-top:4px;padding:4px 7px;background:#d5f5e3;border-radius:5px;font-size:10px;color:#145a32">
+          💡 <a href="https://roumuhi.mlit.go.jp/labor-cost-standard/search/prefecture/saitama" target="_blank" style="color:#145a32">埼玉県の設計労務単価を確認 →</a>
+        </div>
+      </div>
+      <div class="f"><label>1日あたり労務報酬単価（円/日）</label>
+        <input type="number" id="oyaLaborDay" placeholder="例：25000" value="0" oninput="render()">
+      </div>
+      <div class="tip">合計 = 単価 × 就労日数</div>
+    </div>
+  </div>
+  <!-- 一人親方：法定福利費相当額 -->
+  <div class="oyafw">
+    <div class="oyafh" onclick="togFk('oya')">💚 法定福利費相当額（本人負担分）<span id="oyaFkRd" style="font-size:11px">¥0</span><span id="oyaFkArr">▲</span></div>
+    <div class="oyafb" id="oyaFkBd">
+      <div class="db green" style="margin-bottom:9px">
+        <strong>💚 一人親方の法定福利費相当額とは？</strong>
+        一人親方は事業主負担でなく<strong>本人負担</strong>のため、標準見積書の「法定福利費」の対象外ですが、処遇改善のため相当額を請求・確保することが必要です。
+        <ul>
+          <li>建設国保料（1日換算）：月額保険料 ÷ 月平均稼働日数21日</li>
+          <li>国民年金保険料：月額 ÷ 21日</li>
+        </ul>
+      </div>
+      <div class="oyari">
+        <label>① 建設国保料（1日あたり・円）</label>
+        <div class="rd">月額保険料÷21日で計算。例：36,400円÷21日＝1,733円/日</div>
+        <input type="number" id="oyaKokuho" placeholder="例：1733" value="0" oninput="render()">
+      </div>
+      <div class="oyari">
+        <label>② 国民年金保険料（1日あたり・円）</label>
+        <div class="rd">月額16,980円÷21日≈809円/日（令和6年度）</div>
+        <input type="number" id="oyaNenkin" placeholder="例：809" value="0" oninput="render()">
+      </div>
+      <div class="oyafkt">
+        <div style="font-size:12px;color:var(--gn)">法定福利費相当額合計（日数×(国保+年金)）</div>
+        <div class="fkv" id="oyaFkAmt">¥0</div>
+      </div>
+    </div>
+  </div>
+  <!-- 建退共 -->
+  <div class="sec">
+    <div class="sh amber" onclick="tog(this)">📗 建退共掛金（1日あたり320円） <span id="oyaKtkS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db amber">
+        <strong>📗 建退共とは？</strong>
+        一人親方は任意組合を通じて建退共制度に加入できます。320円/日×就労日数で計算されます。就労日数は上記「本現場で働く日数」から自動計算します。
+      </div>
+      <div class="f"><label>建退共掛金（日数×320円・自動計算）</label>
+        <input type="number" id="oyaKtkAmt" class="ro" readonly>
+      </div>
+    </div>
+  </div>
+  <!-- 安全衛生経費（一人親方） -->
+  <div class="sec">
+    <div class="sh amber" onclick="tog(this)">🦺 安全衛生経費（1日あたり） <span id="oyaAnzenS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db amber">
+        <strong>🦺 安全衛生経費（1日あたり）とは？</strong>
+        保護帽・安全帯・安全靴・健康診断・熱中症対策費等。①個別積み上げ または ②経費率 で計上。
+        <ul><li>①個別積み上げ：1日あたり単価を入力</li><li>②経費率：労務費×%</li></ul>
+      </div>
+      <div class="g2">
+        <div class="f"><label>①1日あたり積み上げ（円/日）</label><input type="number" id="oyaAnzen1" placeholder="0" value="0" oninput="render()"></div>
+        <div class="f"><label>②労務費×率（%）</label><input type="number" id="oyaAnzenRate" placeholder="0" value="0" step="0.1" oninput="render()"></div>
+      </div>
+      <div class="f"><label>安全衛生経費合計（自動計算）</label><input type="number" id="oyaAnzenTotal" class="ro" readonly></div>
+    </div>
+  </div>
+  <!-- 一人親方労災 -->
+  <div class="sec">
+    <div class="sh teal" onclick="tog(this)">🏥 一人親方労災特別加入の保険料 <span id="oyaRosaiS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db teal">
+        <strong>🏥 一人親方労災保険料とは？</strong>
+        年間保険料を年間稼働日数（234日）で割って1日あたり単価を算出し、就労日数をかけます。
+        <ul><li>例：給付基礎日額25,000円の場合：年間保険料 ÷ 234日</li></ul>
+      </div>
+      <div class="f"><label>1日あたり労災保険料（円/日）</label>
+        <input type="number" id="oyaRosaiDay" placeholder="例：425" value="0" oninput="render()">
+      </div>
+      <div class="f"><label>合計（日数×単価・自動計算）</label>
+        <input type="number" id="oyaRosaiAmt" class="ro" readonly>
+      </div>
+    </div>
+  </div>
+  <!-- 諸経費（一人親方） -->
+  <div class="sec">
+    <div class="sh gray" onclick="tog(this)">🚗 諸経費等（現場管理費・一般管理費・特定日数経費等） <span id="oyaShoS" style="font-size:11px;margin-right:4px">¥0</span><span>▲</span></div>
+    <div class="sb2">
+      <div class="db blue">
+        <strong>🚗 諸経費等とは？</strong>
+        <ul>
+          <li><strong>現場管理費等：</strong>現場に係る経費（交通費・駐車場代・ガソリン代など）</li>
+          <li><strong>一般管理費等：</strong>道具損料・車両償却費・燃料・通信費・研修費など（年間実績÷稼働日数）</li>
+          <li><strong>特定日数計上経費等：</strong>特定の日数のみかかる経費</li>
+        </ul>
+        <div style="margin-top:3px;font-size:10px;color:#154360">💡 目安：道具損料等2,400円/日（年間実績から算出）</div>
+      </div>
+      <div class="ch3"><span>項目名（1日あたり円/日 または 合計円）</span><span>金額（円）</span><span></span></div>
+      <div id="oyaSho-r"></div>
+      <button class="ab" onclick="addRow('oyaSho',false)">＋ 追加する</button>
+    </div>
+  </div>
+</div>
+
+<!-- 税・調整 -->
+<div class="sec">
+  <div class="sh gray" onclick="tog(this)">💴 消費税・調整・備考 <span>▲</span></div>
+  <div class="sb2">
+    <div class="g2">
+      <div class="f"><label>消費税率</label>
+        <select id="taxRate" onchange="render()">
+          <option value="10">10%（標準税率）</option>
+          <option value="8">8%（軽減税率）</option>
+          <option value="0">0%（非課税・免税）</option>
+        </select>
+      </div>
+      <div class="f"><label>値引き額（円）</label><input type="number" id="disc" value="0" oninput="render()"></div>
+    </div>
+    <div class="f"><label>備考・特記事項（その他）</label>
+      <textarea id="notes" placeholder="例：振込手数料は貴社負担。材料高騰の場合は別途協議。" oninput="render()"></textarea>
+    </div>
+  </div>
+</div>
+
+<div class="pw">
+  <button class="pb preview" id="previewBtn" onclick="doPreview()" style="margin-bottom:10px">👁️　プレビューを表示する</button>
+  <button class="pb blue" id="printBtn" onclick="doPrint()">🖨️　A4×2枚でPDF保存・印刷する</button>
+  <div class="ph">印刷ボタン押下後 →「PDFに保存」を選択してください</div>
+</div>
+
+<!-- プレビューモーダル -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-inner">
+    <div class="modal-header" id="modalHeader">
+      <h2 id="modalTitle">📋 プレビュー</h2>
+      <button class="modal-close" onclick="closePreview()">✕ 閉じる</button>
+    </div>
+    <div class="modal-page-label">▼ 様式1（表紙）</div>
+    <div class="modal-sheet" id="previewSheet1"></div>
+    <div class="modal-page-label">▼ 様式2（内訳書）</div>
+    <div class="modal-sheet" id="previewSheet2"></div>
+    <button class="modal-print-btn blue" id="modalPrintBtn" onclick="doPrint()">🖨️　このままPDF保存・印刷する</button>
+  </div>
+</div>
+
+<div class="pra" id="pra"></div>
+<style>
+/* モーダル内プレビュー用書類スタイル */
+.modal-sheet .pd{
+  width:100%;
+  padding:6mm 5mm;
+  font-family:'Hiragino Kaku Gothic Pro','Meiryo','Yu Gothic',sans-serif;
+  font-size:8pt;
+  color:#1a1a1a;
+  box-sizing:border-box;
+}
+.modal-sheet .pt{font-size:14pt;font-weight:900;letter-spacing:4px;text-align:center;border:2px solid #1a5276;padding:5px;color:#1a5276;margin-bottom:3px}
+.modal-sheet .pt.gn{border-color:#1e8449;color:#1e8449}
+.modal-sheet .psb{text-align:center;font-size:6pt;color:#888;margin-bottom:3px}
+.modal-sheet .pdn{text-align:right;font-size:7pt;color:#666;margin-bottom:5px}
+.modal-sheet .pmeta{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:5px}
+.modal-sheet .pcn{font-size:11pt;font-weight:700;border-bottom:2px solid #1a5276;padding-bottom:2px;margin-bottom:2px}
+.modal-sheet .pcn.gn{border-bottom-color:#1e8449}
+.modal-sheet .piss{border:0.5px solid #ccc;padding:5px;font-size:7pt;line-height:1.7;text-align:right}
+.modal-sheet .pwk{background:#eaf2f8;padding:4px 7px;font-size:7pt;margin-bottom:5px}
+.modal-sheet .pwk.gn{background:#eafaf1}
+.modal-sheet .pwk table{width:100%;border-collapse:collapse}
+.modal-sheet .pwk td{padding:1px 0}.modal-sheet .pwk td:first-child{color:#555;width:68px;font-weight:500}
+.modal-sheet .pg{text-align:center;padding:7px;margin-bottom:5px}
+.modal-sheet .pg.blue{background:#1a5276;color:#fff}
+.modal-sheet .pg.gn{background:#1e8449;color:#fff}
+.modal-sheet .pg .gl{font-size:8pt}
+.modal-sheet .pg .ga{font-size:16pt;font-weight:900;margin-left:6px}
+.modal-sheet .pfk{border:2px solid #c0392b;padding:5px 8px;margin-bottom:5px}
+.modal-sheet .pfk.gn{border-color:#1e8449}
+.modal-sheet .pfk table{width:100%;border-collapse:collapse;font-size:7.5pt}
+.modal-sheet .pfk td{padding:2px 4px}.modal-sheet .pfk td:last-child{text-align:right;font-weight:500}
+.modal-sheet .fkr{color:#c0392b;font-weight:700}
+.modal-sheet .fkr.gn{color:#1e8449}
+.modal-sheet .fkbg{display:inline-block;border:0.5px solid #c0392b;color:#c0392b;font-size:6pt;padding:0 2px;margin-left:2px}
+.modal-sheet .seal{display:inline-block;border:1px solid #aaa;width:38px;height:38px;line-height:36px;text-align:center;font-size:7.5pt;color:#aaa}
+.modal-sheet .plaw{margin-top:4px;padding:3px 6px;border:0.5px solid #aed6f1;background:#eaf2f8;font-size:6pt;color:#1a5276;line-height:1.5}
+.modal-sheet .plaw.gn{border-color:#a9dfbf;background:#eafaf1;color:#1e8449}
+.modal-sheet .pfn{margin-top:3px;font-size:5.5pt;color:#999;line-height:1.5}
+.modal-sheet .ptbl{width:100%;border-collapse:collapse;font-size:7.5pt;margin-bottom:4px}
+.modal-sheet .ptbl th{background:#1a5276;color:#fff;padding:3px 4px;text-align:center;font-weight:500;font-size:7pt}
+.modal-sheet .ptbl.gn th{background:#1e8449}
+.modal-sheet .ptbl td{border:0.5px solid #ccc;padding:2px 4px;vertical-align:middle}
+.modal-sheet .pcat{background:#d6eaf8;font-weight:600;color:#1a5276;font-size:7pt}
+.modal-sheet .pcat.gn{background:#d5f5e3;color:#1e8449}
+.modal-sheet .pcat2{background:#e8f4fb;font-size:7pt;padding-left:8px!important;color:#1a5276}
+.modal-sheet .pcat2.gn{background:#eafaf1;color:#1e8449}
+.modal-sheet .psub{background:#f5f5f5;padding-left:12px!important;font-size:7pt}
+.modal-sheet .plbr{background:#fefce8;padding-left:12px!important;font-size:7pt}
+.modal-sheet .pfkr{background:#fff3f3;color:#c0392b;font-weight:500;font-size:7pt}
+.modal-sheet .pfkr.gn{background:#eafaf1;color:#1e8449}
+.modal-sheet .ptot{background:#e8ecf0;font-weight:600;font-size:7.5pt}
+.modal-sheet .ptot2{background:#dce4ea;font-weight:700;font-size:8pt}
+.modal-sheet .pgrnd{background:#1a5276;color:#fff;font-weight:700;font-size:8.5pt}
+.modal-sheet .pgrnd.gn{background:#1e8449}
+.modal-sheet .tr{text-align:right}.modal-sheet .tc{text-align:center}
+.modal-sheet .s2n{margin-top:4px;font-size:6pt;color:#666;line-height:1.5;border-top:0.5px solid #ddd;padding-top:3px}
+</style>
+<button class="stt" id="sttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="toast" id="toast"></div>
+
+<script>
+let curMode='jigyo', curTab='estimate', rid=0;
+const rows={mat:[],labor:[],other:[],sho:[],oyaMat:[],oyaSho:[]};
+const SK='doken_v4';
+
+window.addEventListener('scroll',()=>{document.getElementById('sttBtn').classList.toggle('show',window.scrollY>300);});
+function toast(msg,c){const t=document.getElementById('toast');t.textContent=msg;t.style.background=c||'#333';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
+
+function setMode(m){
+  curMode=m;
+  const isOya=m==='oya';
+  document.getElementById('modeJigyoBtn').classList.toggle('on',!isOya);
+  document.getElementById('modeOyaBtn').classList.toggle('on',isOya);
+  document.getElementById('modeOyaBtn').classList.toggle('oya',isOya);
+  document.getElementById('jigyoArea').style.display=isOya?'none':'';
+  document.getElementById('oyaArea').style.display=isOya?'':'none';
+  document.getElementById('tbar').className='tbar '+(isOya?'green':'blue');
+  document.getElementById('banner').className='banner'+(isOya?' oya':'');
+  document.getElementById('bannerTitle').className=isOya?'green':'blue';
+  document.getElementById('bannerTitle').textContent=isOya?'👤 一人親方用 標準見積書（埼玉土建上尾伊奈支部版）':'🏢 事業者用 標準見積書（埼玉土建上尾伊奈支部版）';
+  document.getElementById('bannerDesc').textContent=isOya?'材料費・労務報酬・法定福利費相当額・建退共・安全衛生経費・一人親方労災保険料・諸経費を内訳明示した一人親方用標準見積書を作成します。':'建設業法第20条対応。材料費・労務費・法定福利費・建退共掛金・安全衛生経費を内訳明示した標準見積書を作成します。';
+  document.getElementById('printBtn').className='pb '+(isOya?'green':'blue');
+  render();
+}
+
+function setTab(t){
+  curTab=t;
+  document.querySelectorAll('.dt').forEach((el,i)=>el.classList.toggle('on',(i===0&&t==='estimate')||(i===1&&t==='invoice')));
+  document.getElementById('exf').style.display=t==='estimate'?'':'none';
+  document.getElementById('duf').style.display=t==='invoice'?'':'none';
+  document.getElementById('bkf').style.display=t==='invoice'?'':'none';
+  render();
+}
+
+function tog(h){const b=h.nextElementSibling;const a=h.querySelector('span:last-child');b.classList.toggle('hide');a.textContent=b.classList.contains('hide')?'▼':'▲';}
+function togFk(type){
+  if(type==='jigyo'){const b=document.getElementById('fkBd');const a=document.getElementById('fkArr');b.classList.toggle('hide');a.textContent=b.classList.contains('hide')?'▼':'▲';}
+  else{const b=document.getElementById('oyaFkBd');const a=document.getElementById('oyaFkArr');b.classList.toggle('hide');a.textContent=b.classList.contains('hide')?'▼':'▲';}
+}
+
+function addRow(cat,hasQty,name,qty,price){
+  const id=++rid; rows[cat].push(id);
+  const c=document.getElementById(cat+'-r');
+  const d=document.createElement('div');
+  d.id='r'+id;
+  d.style.cssText='background:#f9f9f9;border:1px solid #ddd;border-radius:10px;padding:12px 12px 8px;margin-bottom:12px';
+  const isL=(cat==='labor');
+  const INP='width:100%;font-size:18px;padding:13px 12px;border:1.5px solid #bbb;border-radius:8px;font-family:inherit;color:#1a1a1a;background:#fff;box-sizing:border-box;display:block;margin-bottom:8px;-webkit-appearance:none;appearance:none';
+  const LBL='display:block;font-size:13px;color:#555;font-weight:600;margin-bottom:4px';
+  const LHIBG='background:#fefce8';
+  if(hasQty){
+    d.innerHTML=`
+      <div>
+        <span style="${LBL}">${isL?'職種・作業内容':'項目名・規格'}</span>
+        <input type="text" class="n" placeholder="${isL?'例: 塗装工（外壁）10人工':'例: 外壁塗料・副資材'}" value="${name||''}" oninput="render()" style="${INP}">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px">
+        <div>
+          <span style="${LBL}">数量</span>
+          <input type="number" class="q" placeholder="例: 10" value="${qty||''}" oninput="calcRowAmt(${id})" style="${INP}margin-bottom:0">
+        </div>
+        <div>
+          <span style="${LBL}">単価（円）</span>
+          <input type="number" class="p" placeholder="例: 33000" value="${price||''}" oninput="calcRowAmt(${id})" style="${INP}margin-bottom:0;${isL?LHIBG:''}">
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;align-items:center;margin-top:4px">
+        <span style="font-size:13px;color:#555;margin-right:8px">小計：</span>
+        <span class="row-amt" id="amt-${id}" style="font-size:16px;font-weight:700;color:#1a5276;margin-right:12px">¥0</span>
+        <button onclick="delRow('${cat}',${id})" style="background:#fff;border:1.5px solid #c0392b;color:#c0392b;border-radius:6px;padding:6px 14px;font-size:14px;cursor:pointer;font-weight:600">削除</button>
+      </div>`;
+  } else {
+    d.innerHTML=`
+      <div>
+        <span style="${LBL}">項目名</span>
+        <input type="text" class="n" placeholder="例: 現場管理費" value="${name||''}" oninput="render()" style="${INP}">
+      </div>
+      <div>
+        <span style="${LBL}">金額（円）</span>
+        <input type="number" class="a" placeholder="例: 50000" value="${price||0}" inputmode="numeric" oninput="render()" style="${INP}">
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:4px">
+        <button onclick="delRow('${cat}',${id})" style="background:#fff;border:1.5px solid #c0392b;color:#c0392b;border-radius:6px;padding:6px 14px;font-size:14px;cursor:pointer;font-weight:600">削除</button>
+      </div>`;
+  }
+  c.appendChild(d); render();
+}
+
+function calcRowAmt(id){
+  const el=document.getElementById('r'+id); if(!el) return;
+  const q=parseFloat(el.querySelector('.q')?.value)||0;
+  const p=parseFloat(el.querySelector('.p')?.value)||0;
+  const amt=Math.round(q*p);
+  const amtEl=document.getElementById('amt-'+id);
+  if(amtEl) amtEl.textContent='¥'+amt.toLocaleString('ja-JP');
+  render();
+}
+
+function delRow(cat,id){rows[cat]=rows[cat].filter(i=>i!==id);const el=document.getElementById('r'+id);if(el)el.remove();render();}
+
+function getR(cat,hasQty){
+  return rows[cat].map(id=>{
+    const el=document.getElementById('r'+id); if(!el)return null;
+    if(hasQty){
+      const q=parseFloat(el.querySelector('.q')?.value)||0;
+      const p=parseFloat(el.querySelector('.p')?.value)||0;
+      return{name:el.querySelector('.n').value||'',qty:q,price:p,amount:q*p};
+    } else {
+      return{name:el.querySelector('.n').value||'',amount:parseFloat(el.querySelector('.a').value)||0};
+    }
+  }).filter(i=>i&&(i.name||i.amount>0));
+}
+
+function cs(cat,hasQty){return getR(cat,hasQty).reduce((s,i)=>s+i.amount,0);}
+function fmt(n){return Math.round(n).toLocaleString('ja-JP');}
+function fmtD(d){return d?d.replace(/-/g,'/'):'　　　';}
+function v(id){return document.getElementById(id)?.value||'';}
+function sv(id,val){const el=document.getElementById(id);if(el)el.value=val===undefined?'':val;}
+function nv(id){return parseFloat(document.getElementById(id)?.value)||0;}
+
+function calcKtk(){const days=nv('ktkDays');const amt=Math.round(days*320);sv('ktkAmt',amt);render();}
+function calcAnzen(){
+  // calcAnzen は表示更新のみ。実計算は renderJigyo() に統合
+  render();
+}
+
+function calcFk(){
+  const r=[v('r1'),v('r2'),v('r3'),v('r4')].map(x=>parseFloat(x)||0);
+  const rate=r.reduce((a,b)=>a+b,0);
+  const fkAmt=Math.round(cs('labor',true)*rate/100);
+  document.getElementById('fkRd').textContent='合計：'+rate.toFixed(2)+'%';
+  document.getElementById('fkRt').textContent=rate.toFixed(2)+'%';
+  document.getElementById('fkAmt').textContent='¥'+fmt(fkAmt);
+  return{rate,fkAmt};
+}
+
+function render(){
+  if(curMode==='jigyo') renderJigyo();
+  else renderOya();
+}
+
+function renderJigyo(){
+  const matS=cs('mat',true),laborS=cs('labor',true),otherS=cs('other',false);
+  // 安全衛生経費：毎回再計算（条件なし）
+  const anzen1=nv('anzen1');
+  const anzenRate2=nv('anzenRate');
+  const anzen2=Math.round(laborS*anzenRate2/100);
+  const anzenTotal=anzen1+anzen2;
+  sv('anzen2', anzen2);
+  sv('anzenTotal', anzenTotal);
+  const anzenAmt=anzenTotal;
+  // セクションヘッダー表示も更新
+  const anzenSEl=document.getElementById('anzenS');
+  if(anzenSEl) anzenSEl.textContent='¥'+fmt(anzenTotal);
+  // ②経費率計上額の表示更新
+  const anzen2El=document.getElementById('anzen2');
+  if(anzen2El) anzen2El.value=anzen2;
+  const anzenTotalEl=document.getElementById('anzenTotal');
+  if(anzenTotalEl) anzenTotalEl.value=anzenTotal;
+  const ktkAmt=nv('ktkAmt'),shoS=cs('sho',false);
+  document.getElementById('matS').textContent='¥'+fmt(matS);
+  document.getElementById('laborS').textContent='¥'+fmt(laborS);
+  document.getElementById('otherS').textContent='¥'+fmt(otherS);
+  document.getElementById('ktkS').textContent='¥'+fmt(ktkAmt);
+  document.getElementById('shoS').textContent='¥'+fmt(shoS);
+  const{rate,fkAmt}=calcFk();
+  const disc=parseFloat(v('disc'))||0;
+  const taxRate=parseInt(v('taxRate')||'10');
+  const subtotal=matS+laborS+otherS+ktkAmt+anzenAmt+shoS-disc;
+  const subtotalFk=subtotal+fkAmt;
+  const tax=Math.floor(subtotalFk*taxRate/100);
+  const total=subtotalFk+tax;
+  document.getElementById('tAmt').textContent='¥ '+fmt(total);
+  document.getElementById('s1').textContent='¥'+fmt(subtotal);
+  document.getElementById('s2').textContent='¥'+fmt(fkAmt);
+  document.getElementById('s3').textContent='¥'+fmt(tax);
+  autoSave();
+}
+
+function renderOya(){
+  const days=nv('oyaDays');
+  const matS=cs('oyaMat',true);
+  const laborS=Math.round(days*nv('oyaLaborDay'));
+  const kokuho=nv('oyaKokuho'),nenkin=nv('oyaNenkin');
+  const fkAmt=Math.round(days*(kokuho+nenkin));
+  const ktkAmt=Math.round(days*320);
+  const anzen1Day=nv('oyaAnzen1');
+  const anzenRate=nv('oyaAnzenRate');
+  const anzen2=Math.round(laborS*anzenRate/100);
+  const anzenTotal=Math.round(days*anzen1Day)+anzen2;
+  const rosaiAmt=Math.round(days*nv('oyaRosaiDay'));
+  const shoS=cs('oyaSho',false);
+  sv('oyaKtkAmt',ktkAmt);
+  sv('oyaRosaiAmt',rosaiAmt);
+  sv('oyaAnzenTotal',anzenTotal);
+  document.getElementById('oyaMatS').textContent='¥'+fmt(matS);
+  document.getElementById('oyaLaborS').textContent='¥'+fmt(laborS);
+  document.getElementById('oyaFkRd').textContent='¥'+fmt(fkAmt);
+  document.getElementById('oyaFkAmt').textContent='¥'+fmt(fkAmt);
+  document.getElementById('oyaKtkS').textContent='¥'+fmt(ktkAmt);
+  document.getElementById('oyaAnzenS').textContent='¥'+fmt(anzenTotal);
+  document.getElementById('oyaRosaiS').textContent='¥'+fmt(rosaiAmt);
+  document.getElementById('oyaShoS').textContent='¥'+fmt(shoS);
+  const disc=parseFloat(v('disc'))||0;
+  const taxRate=parseInt(v('taxRate')||'10');
+  const subtotal=matS+laborS+fkAmt+ktkAmt+anzenTotal+rosaiAmt+shoS-disc;
+  const tax=Math.floor(subtotal*taxRate/100);
+  const total=subtotal+tax;
+  document.getElementById('tAmt').textContent='¥ '+fmt(total);
+  document.getElementById('s1').textContent='¥'+fmt(laborS);
+  document.getElementById('s2').textContent='¥'+fmt(fkAmt);
+  document.getElementById('s3').textContent='¥'+fmt(tax);
+  autoSave();
+}
+
+function autoSave(){clearTimeout(window._as);window._as=setTimeout(()=>localStorage.setItem(SK+'_auto',JSON.stringify(collect())),5000);}
+
+function collect(){
+  const d={curMode,curTab,items:{},oyaRows:{}};
+  ['docNo','docDate','expiryDate','dueDate','payTerm','uketori','sonota','cName','cPerson','cAddr',
+   'iName','iAddr','iTel','iPerson','licNo','licDate','bank','wTitle','wPlace','wFrom','wTo',
+   'r1','r2','r3','r4','taxRate','disc','notes',
+   'ktkDays','ktkAmt','anzen1','anzenRate','anzen2','anzenTotal',
+   'oyaDays','oyaLaborDay','oyaKokuho','oyaNenkin','oyaAnzen1','oyaAnzenRate','oyaRosaiDay'].forEach(k=>d[k]=v(k));
+  ['mat','labor','other','sho'].forEach(cat=>{
+    d.items[cat]=getR(cat,cat==='mat'||cat==='labor');
+  });
+  ['oyaMat','oyaSho'].forEach(cat=>{
+    d.oyaRows[cat]=getR(cat,cat==='oyaMat');
+  });
+  return d;
+}
+
+function applyData(d){
+  ['docNo','docDate','expiryDate','dueDate','payTerm','uketori','sonota','cName','cPerson','cAddr',
+   'iName','iAddr','iTel','iPerson','licNo','licDate','bank','wTitle','wPlace','wFrom','wTo',
+   'r1','r2','r3','r4','taxRate','disc','notes',
+   'ktkDays','ktkAmt','anzen1','anzenRate','anzen2','anzenTotal',
+   'oyaDays','oyaLaborDay','oyaKokuho','oyaNenkin','oyaAnzen1','oyaAnzenRate','oyaRosaiDay'].forEach(k=>sv(k,d[k]));
+  setMode(d.curMode||'jigyo');
+  setTab(d.curTab||'estimate');
+  ['mat','labor','other','sho'].forEach(cat=>{
+    document.getElementById(cat+'-r').innerHTML='';rows[cat]=[];
+    const hasQ=cat==='mat'||cat==='labor';
+    (d.items[cat]||[]).forEach(i=>addRow(cat,hasQ,i.name,i.qty,i.price||i.amount));
+  });
+  ['oyaMat','oyaSho'].forEach(cat=>{
+    document.getElementById(cat+'-r').innerHTML='';rows[cat]=[];
+    const hasQ=cat==='oyaMat';
+    (d.oyaRows[cat]||[]).forEach(i=>addRow(cat,hasQ,i.name,i.qty,i.price||i.amount));
+  });
+  render();
+}
+
+// ===== データ管理 =====
+const SK_LIST='doken_list_v1'; // 複数保存リストのキー
+
+function getSaveList(){
+  try{return JSON.parse(localStorage.getItem(SK_LIST))||[];}
+  catch(e){return [];}
+}
+function setSaveList(list){
+  localStorage.setItem(SK_LIST,JSON.stringify(list));
+}
+
+function saveData(){
+  const d=collect();
+  const now=new Date();
+  const label=`${d.wTitle||'（工事名未入力）'}｜${d.curMode==='jigyo'?'事業者':'一人親方'}｜${now.toLocaleDateString('ja-JP')} ${now.toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'})}`;
+  const list=getSaveList();
+  // 同じ工事名・モードがあれば上書き確認
+  const existIdx=list.findIndex(i=>i.wTitle===d.wTitle&&i.curMode===d.curMode);
+  if(existIdx>=0){
+    if(!confirm(`「${d.wTitle||'（未入力）'}」のデータが既に保存されています。
+上書きしますか？`)){
+      return;
+    }
+    list[existIdx]={...d,_label:label,_savedAt:now.toISOString()};
+  } else {
+    list.unshift({...d,_label:label,_savedAt:now.toISOString()});
+    // 最大20件まで保存
+    if(list.length>20) list.splice(20);
+  }
+  setSaveList(list);
+  // 最後に使ったデータとしても保存
+  localStorage.setItem(SK,JSON.stringify(d));
+  toast('💾 保存しました（一覧に追加）','#1e8449');
+}
+
+function loadData(){
+  try{
+    const raw=localStorage.getItem(SK);
+    if(!raw){toast('保存データがありません','#b7770d');return;}
+    applyData(JSON.parse(raw));
+    toast('📂 最後に保存したデータを読み込みました','#1a5276');
+  }catch(e){toast('読み込み失敗','#c0392b');}
+}
+
+function openList(){
+  renderList();
+  document.getElementById('listModal').classList.add('show');
+}
+function closeList(){
+  document.getElementById('listModal').classList.remove('show');
+}
+
+function renderList(){
+  const list=getSaveList();
+  const c=document.getElementById('listContainer');
+  if(list.length===0){
+    c.innerHTML='<div style="text-align:center;padding:30px;color:#888;background:#fff;border-radius:10px">保存データがありません。<br>「現在の内容を新規保存する」で保存してください。</div>';
+    return;
+  }
+  c.innerHTML=list.map((d,i)=>`
+    <div style="background:#fff;border-radius:10px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
+      <div style="font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:4px">${d._label||d.wTitle||'（無題）'}</div>
+      <div style="font-size:12px;color:#888;margin-bottom:10px">保存日時：${d._savedAt?new Date(d._savedAt).toLocaleString('ja-JP'):'-'}</div>
+      <div style="display:flex;gap:8px">
+        <button onclick="loadFromList(${i})" style="flex:1;padding:10px;background:#1a5276;color:#fff;border:none;border-radius:7px;font-size:14px;font-weight:600;cursor:pointer">📂 読み込む</button>
+        <button onclick="deleteFromList(${i})" style="padding:10px 14px;background:#fff;color:#c0392b;border:1.5px solid #c0392b;border-radius:7px;font-size:14px;cursor:pointer">削除</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function loadFromList(idx){
+  const list=getSaveList();
+  if(!list[idx]) return;
+  if(!confirm('現在の入力内容が上書きされます。読み込みますか？')) return;
+  applyData(list[idx]);
+  closeList();
+  toast('📂 読み込みました：'+(list[idx].wTitle||'（無題）'),'#1a5276');
+}
+
+function deleteFromList(idx){
+  const list=getSaveList();
+  if(!list[idx]) return;
+  if(!confirm(`「${list[idx].wTitle||'（無題）'}」を削除しますか？`)) return;
+  list.splice(idx,1);
+  setSaveList(list);
+  renderList();
+  toast('削除しました','#555');
+}
+
+// JSONファイルとしてダウンロード（バックアップ・共有用）
+function dlJSON(){
+  const d=collect();
+  const list=getSaveList();
+  const exportData={
+    _version:'doken_v1',
+    _exportedAt:new Date().toISOString(),
+    _app:'埼玉土建上尾伊奈支部版標準見積書',
+    current:d,
+    list:list
+  };
+  const json=JSON.stringify(exportData,null,2);
+  const bom='﻿';
+  const blob=new Blob([bom+json],{type:'application/json;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  const now=new Date();
+  const dateStr=`${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`;
+  a.download=`見積書データ_${d.wTitle||'全件'}_${dateStr}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('📤 JSONファイルをダウンロードしました（バックアップ保存）','#b7770d');
+}
+
+// JSONファイルから復元
+function importJSON(){
+  document.getElementById('importFile').click();
+}
+
+function doImport(e){
+  const file=e.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    try{
+      const raw=ev.target.result.replace(/^﻿/,'');
+      const data=JSON.parse(raw);
+      // バージョンチェック
+      if(!data._version||!data.current){
+        toast('❌ このファイルは対応していない形式です','#c0392b');
+        return;
+      }
+      const msg=`「${data.current.wTitle||'（無題）'}」
+保存日時：${data._exportedAt?new Date(data._exportedAt).toLocaleString('ja-JP'):'-'}
+
+このデータを取り込みますか？
+※現在の保存一覧にも追加されます`;
+      if(!confirm(msg)) return;
+      // 現在のデータに適用
+      applyData(data.current);
+      // 保存一覧にもマージ
+      if(data.list&&data.list.length>0){
+        const currentList=getSaveList();
+        data.list.forEach(item=>{
+          if(!currentList.find(i=>i._savedAt===item._savedAt)){
+            currentList.push(item);
+          }
+        });
+        currentList.sort((a,b)=>new Date(b._savedAt)-new Date(a._savedAt));
+        if(currentList.length>20) currentList.splice(20);
+        setSaveList(currentList);
+      }
+      toast('📥 データを取り込みました','#1e8449');
+    }catch(err){
+      toast('❌ ファイルの読み込みに失敗しました','#c0392b');
+    }
+  };
+  reader.readAsText(file,'UTF-8');
+  e.target.value='';
+}
+function clearData(){
+  if(!confirm('入力内容をクリアしますか？'))return;
+  ['mat','labor','other','sho','oyaMat','oyaSho'].forEach(cat=>{
+    const el=document.getElementById(cat+'-r');if(el){el.innerHTML='';rows[cat]=[];}
+  });
+  ['docNo','cName','cPerson','cAddr','iName','iAddr','iTel','iPerson','licNo','licDate','bank','wTitle','wPlace','wFrom','wTo','uketori','sonota','notes'].forEach(k=>sv(k,''));
+  ['disc','ktkDays','ktkAmt','anzen1','anzenRate','anzen2','anzenTotal','oyaDays','oyaLaborDay','oyaKokuho','oyaNenkin','oyaAnzen1','oyaAnzenRate','oyaRosaiDay'].forEach(k=>sv(k,'0'));
+  sv('taxRate','10');sv('r1','1.05');sv('r2','4.84');sv('r3','0.81');sv('r4','9.51');
+  sv('docDate',new Date().toISOString().split('T')[0]);
+  render();toast('🗑️ クリアしました','#555');
+}
+function dlCSV(){
+  const d=collect();
+  const isOya=d.curMode==='oya';
+  const rs=[];
+  rs.push(['埼玉土建上尾伊奈支部版　標準見積書データ（CSV）']);
+  rs.push(['種別',isOya?'一人親方用':'事業者用'],['書類種別',d.curTab==='estimate'?'御見積書':'御請求書']);
+  rs.push(['書類番号',d.docNo],['発行日',d.docDate],['有効期限',d.expiryDate]);
+  rs.push(['工事名',d.wTitle],['工事場所',d.wPlace],['工期（自）',d.wFrom],['工期（至）',d.wTo]);
+  rs.push(['宛先',d.cName],['担当者',d.cPerson],['住所',d.cAddr]);
+  rs.push(['発行者',d.iName],['住所',d.iAddr],['TEL',d.iTel],['担当',d.iPerson]);
+  rs.push(['支払条件',d.payTerm],['消費税率',d.taxRate+'%'],['値引き',d.disc]);
+  rs.push([]);
+  if(!isOya){
+    rs.push(['【直接工事費】','','']);
+    rs.push(['区分','項目名','数量','単価','金額']);
+    const cats={mat:'材料費',labor:'労務費'};
+    Object.entries(cats).forEach(([cat,lbl])=>{
+      (d.items[cat]||[]).forEach(i=>rs.push([lbl,i.name,i.qty||'',i.price||'',i.amount||'']));
+    });
+    (d.items.other||[]).forEach(i=>rs.push(['機械等',i.name,'','',i.amount||'']));
+    rs.push(['建退共掛金','',d.ktkDays+'日','320円',d.ktkAmt]);
+    rs.push(['安全衛生①個別',d.anzen1||0,'','',d.anzen1||0]);
+    rs.push(['安全衛生②経費率','労務費×'+d.anzenRate+'%','','',d.anzen2||0]);
+    rs.push(['安全衛生合計','','','',d.anzenTotal||0]);
+    rs.push([]);
+    rs.push(['【諸経費】','','','','']);
+    (d.items.sho||[]).forEach(i=>rs.push(['諸経費',i.name,'','',i.amount||'']));
+    rs.push([]);
+    rs.push(['【法定福利費】','','','','']);
+    rs.push(['雇用保険（事業主）',d.r1+'%'],['健康保険（事業主）',d.r2+'%']);
+    rs.push(['介護保険（事業主）',d.r3+'%'],['厚生年金等（事業主）',d.r4+'%']);
+  } else {
+    rs.push(['就労日数',d.oyaDays+'日']);
+    rs.push(['労務報酬単価',d.oyaLaborDay+'円/日']);
+    rs.push(['建設国保（日額）',d.oyaKokuho+'円/日'],['国民年金（日額）',d.oyaNenkin+'円/日']);
+    rs.push(['一人親方労災（日額）',d.oyaRosaiDay+'円/日']);
+    rs.push(['安全衛生①日額',d.oyaAnzen1+'円/日'],['安全衛生②率',d.oyaAnzenRate+'%']);
+    rs.push([]);
+    rs.push(['【材料費明細】']);
+    (d.oyaRows.oyaMat||[]).forEach(i=>rs.push(['材料費',i.name,i.qty||'',i.price||'',i.amount||'']));
+    rs.push([]);
+    rs.push(['【諸経費明細】']);
+    (d.oyaRows.oyaSho||[]).forEach(i=>rs.push(['諸経費',i.name,'','',i.amount||'']));
+  }
+  rs.push(['備考',d.notes]);
+  const bom='﻿';
+  const csv=bom+rs.map(r=>r.map(c=>`"${String(c===undefined||c===null?'':c).replace(/"/g,'""')}"`).join(',')).join('
+');
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  const now=new Date();
+  const dateStr=`${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`;
+  a.download=`見積書_${d.wTitle||'無題'}_${dateStr}.csv`;
+  a.click();
+  toast('📊 CSVダウンロード（Excel確認用）','#b7770d');
+}
+
+function doPreview(){
+  // プレビュー用HTMLを生成してモーダルに表示
+  const isInv=curTab==='invoice';
+  const isOya=curMode==='oya';
+  const color=isOya?'gn':'blue';
+  document.getElementById('modalHeader').className='modal-header'+(isOya?' gn':'');
+  document.getElementById('modalTitle').textContent='📋 プレビュー｜'+(isOya?'一人親方用':'事業者用')+(isInv?' 御請求書':' 御見積書');
+  document.getElementById('modalPrintBtn').className='modal-print-btn '+color;
+
+  // 印刷用HTMLを生成
+  if(isOya) buildOyaHTML();
+  else buildJigyoHTML();
+
+  // pra の中身をプレビューシートに流し込む
+  const praEl=document.getElementById('pra');
+  const sheets=praEl.querySelectorAll('.pd');
+  if(sheets.length>=1) document.getElementById('previewSheet1').innerHTML='<div class="pd">'+sheets[0].innerHTML+'</div>';
+  if(sheets.length>=2) document.getElementById('previewSheet2').innerHTML='<div class="pd">'+sheets[1].innerHTML+'</div>';
+
+  document.getElementById('modalOverlay').classList.add('show');
+  document.getElementById('modalOverlay').scrollTop=0;
+}
+
+function closePreview(){
+  document.getElementById('modalOverlay').classList.remove('show');
+}
+
+// タッチ外クリックで閉じる
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('modalOverlay').addEventListener('click',function(e){
+    if(e.target===this) closePreview();
+  });
+});
+
+function doPrint(){
+  closePreview();
+  if(curMode==='jigyo') printJigyo();
+  else printOya();
+}
+
+function buildJigyoHTML(){
+  const matS=cs('mat',true),laborS=cs('labor',true),otherS=cs('other',false);
+  const ktkAmt=nv('ktkAmt'),anzenAmt=nv('anzenTotal'),shoS=cs('sho',false);
+  const{rate,fkAmt}=calcFk();
+  const disc=parseFloat(v('disc'))||0, taxRate=parseInt(v('taxRate')||'10');
+  const subtotal=matS+laborS+otherS+ktkAmt+anzenAmt+shoS-disc;
+  const subtotalFk=subtotal+fkAmt;
+  const tax=Math.floor(subtotalFk*taxRate/100), total=subtotalFk+tax;
+  const isInv=curTab==='invoice';
+  const dTitle=isInv?'御　請　求　書':'御　見　積　書';
+  const cn=v('cName')||'（未入力）',cp=v('cPerson'),ca=v('cAddr');
+  const iN=v('iName')||'（未入力）',iA=v('iAddr'),iT=v('iTel'),iP=v('iPerson');
+  const licNo=v('licNo'),licDate=v('licDate'),bank=v('bank');
+  const docNo=v('docNo'),docDate=v('docDate'),exD=v('expiryDate'),duD=v('dueDate'),payT=v('payTerm');
+  const wT=v('wTitle')||'（未入力）',wP=v('wPlace'),wF=v('wFrom'),wTo2=v('wTo');
+  const uketori=v('uketori'),sonota=v('sonota'),notes=v('notes');
+  const r1=v('r1'),r2=v('r2'),r3=v('r3'),r4=v('r4');
+
+  const bR4=(cat)=>{
+    const its=getR(cat,true);
+    if(!its.length)return`<tr><td class="psub" colspan="5" style="color:#bbb">（入力なし）</td></tr>`;
+    return its.map(i=>`<tr class="${cat==='labor'?'plbr':'psub'}"><td>${i.name}</td><td class="tc">${i.qty||''}</td><td class="tr">${i.price?'¥ '+fmt(i.price):''}</td><td></td><td class="tr">¥ ${fmt(i.amount)}</td></tr>`).join('');
+  };
+  const bR3=(cat)=>{
+    const its=getR(cat,false);
+    if(!its.length)return`<tr><td class="psub" colspan="5" style="color:#bbb">（入力なし）</td></tr>`;
+    return its.map(i=>`<tr class="psub"><td colspan="3">${i.name}</td><td></td><td class="tr">¥ ${fmt(i.amount)}</td></tr>`).join('');
+  };
+
+  const s1=`<div class="pd">
+  <div style="text-align:right;font-size:7pt;color:#666;margin-bottom:2px">建設業許可番号：${licNo||'　'}　許可年月日：${licDate||'　'}</div>
+  <div class="pt">${dTitle}</div>
+  <div class="psb">建設業法第20条対応・法定福利費別枠明示様式（埼玉土建上尾伊奈支部版標準見積書・国交省「労務費に関する基準」令和7年12月施行対応）</div>
+  <div class="pdn">${docNo?'書類番号: '+docNo+'　':''}見積日付: ${fmtD(docDate)}</div>
+  <div class="pmeta">
+    <div>
+      <div style="font-size:7pt;color:#777;margin-bottom:2px">${isInv?'ご請求先':'お見積先'}</div>
+      <div class="pcn">${cn}${cp?'　'+cp:''}&ensp;御中</div>
+      ${ca?`<div style="font-size:7.5pt;color:#555;margin-top:2px">${ca}</div>`:''}
+      <div style="margin-top:6px;font-size:9pt">下記のとおり御見積申し上げます。</div>
+    </div>
+    <div class="piss">
+      <div style="font-size:11pt;font-weight:700">${iN}</div>
+      ${iA?`<div>${iA}</div>`:''}${iT?`<div>電話番号: ${iT}</div>`:''}${iP?`<div>担当: ${iP}</div>`:''}
+      <div style="margin-top:5px"><span class="seal">　印　</span></div>
+    </div>
+  </div>
+  <div class="pwk"><table>
+    <tr><td>工 事 名</td><td style="font-weight:700;font-size:9.5pt">${wT}</td></tr>
+    ${wP?`<tr><td>工 事 場 所</td><td>${wP}</td></tr>`:''}
+    <tr><td>工 期</td><td>自 ${fmtD(wF)}　至 ${fmtD(wTo2)}</td></tr>
+    <tr><td>支 払 条 件</td><td>${payT||'　'}</td></tr>
+    ${!isInv&&exD?`<tr><td>見積有効期限</td><td>${fmtD(exD)}</td></tr>`:''}
+    ${isInv&&duD?`<tr><td>お支払期限</td><td style="color:#c0392b;font-weight:700">${fmtD(duD)}</td></tr>`:''}
+    ${uketori?`<tr><td>受渡場所</td><td>${uketori}</td></tr>`:''}
+    ${sonota?`<tr><td>そ の 他</td><td>${sonota}</td></tr>`:''}
+    ${isInv&&bank?`<tr><td>振 込 先</td><td>${bank}</td></tr>`:''}
+  </table></div>
+  <div class="pg blue"><span class="gl">見積金額合計（税込）</span><span class="ga">¥ ${fmt(total)} −</span></div>
+  <div class="pfk"><table>
+    <tr><td style="font-size:8pt;color:#555">見積書合計金額（税抜）（A）の内訳（建設業法第20条第1項等により内訳明示）</td><td></td></tr>
+    <tr><td style="padding-left:8px">材料費</td><td class="tr">¥ ${fmt(matS)}</td></tr>
+    <tr><td style="padding-left:8px">労務費<span style="font-size:6.5pt;color:#888">（技能者賃金の原資・法定福利費事業主負担分を除く）</span></td><td class="tr">¥ ${fmt(laborS)}</td></tr>
+    <tr><td class="fkr" style="padding-left:8px">法定福利費（事業主負担分）<span class="fkbg">別枠明示</span></td><td class="tr fkr">¥ ${fmt(fkAmt)}</td></tr>
+    <tr><td style="padding-left:8px">建退共掛金</td><td class="tr">¥ ${fmt(ktkAmt)}</td></tr>
+    <tr><td style="padding-left:8px">安全衛生経費</td><td class="tr">¥ ${fmt(anzenAmt)}</td></tr>
+    <tr style="border-top:1px solid #ccc"><td>見積金額合計（税抜）（A）</td><td class="tr" style="font-weight:700">¥ ${fmt(subtotalFk)}</td></tr>
+    <tr><td>消費税等（${taxRate}%）</td><td class="tr">¥ ${fmt(tax)}</td></tr>
+    <tr style="border-top:2px solid #333"><td style="font-weight:700;font-size:10pt">見積金額合計（税込）</td><td class="tr" style="font-weight:900;font-size:12pt">¥ ${fmt(total)}</td></tr>
+  </table></div>
+  ${notes?`<div style="margin-top:5px;font-size:7.5pt;color:#444;border-top:0.5px solid #ccc;padding-top:4px;white-space:pre-wrap"><strong>備考：</strong> ${notes}</div>`:''}
+  <div class="plaw">上記5つの経費（材料費・労務費・法定福利費・建退共掛金・安全衛生経費）の額について、受注者が通常必要と認められる額を著しく下回るように見積もること及び注文者が著しく下回ることとなるように変更依頼することは、建設業法第20条第２項・第６項において禁止されています。国交省「労務費に関する基準」（令和7年12月施行）対応。</div>
+  <div class="pfn">※法定福利費も消費税の課税対象　※国交省「労務費に関する基準」ポータル: https://roumuhi.mlit.go.jp/</div>
+  </div>`;
+
+  const directS=matS+laborS+otherS;
+  const s2=`<div class="pd">
+  <div style="font-size:9pt;font-weight:700;text-align:center;border-bottom:2px solid #1a5276;padding-bottom:3px;margin-bottom:5px">見積書合計金額（税抜）（A）のうち、建設業法第20条第1項等により内訳明示することとされている経費の明細書</div>
+  <div style="font-size:8pt;margin-bottom:5px">工事名：<strong>${wT}</strong>　　発行日：${fmtD(docDate)}</div>
+  <table class="ptbl">
+    <thead><tr>
+      <th style="width:34%">名称・仕様</th>
+      <th style="width:8%">数量</th>
+      <th style="width:12%">単価（円）</th>
+      <th style="width:8%">歩掛等</th>
+      <th style="width:14%">金額（円）</th>
+    </tr></thead>
+    <tbody>
+      <tr class="pcat"><td colspan="5">◆ 直接工事費</td></tr>
+      <tr class="pcat2"><td colspan="5">　材料費</td></tr>
+      ${bR4('mat')}
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">材料費　小計</td><td></td><td class="tr">¥ ${fmt(matS)}</td></tr>
+      <tr class="pcat2"><td colspan="5">　労務費（技能者の賃金・法定福利費事業主負担分を除く）</td></tr>
+      ${bR4('labor')}
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">労務費　小計</td><td></td><td class="tr" style="color:#1a5276">¥ ${fmt(laborS)}</td></tr>
+      <tr class="pcat2"><td colspan="5">　機械等・その他直接費</td></tr>
+      ${bR3('other')}
+      <tr class="ptot2"><td colspan="3">直接工事費　合計</td><td></td><td class="tr">¥ ${fmt(directS)}</td></tr>
+      <tr class="pcat"><td colspan="5">◆ 法定福利費（事業主負担分）【別枠明示】</td></tr>
+      <tr class="pfkr">
+        <td colspan="3">法定福利費（事業主負担分）<span class="fkbg">別枠明示</span><br><span style="font-size:6.5pt">雇用保険${r1}%＋健康保険${r2}%＋介護保険${r3}%＋厚生年金等${r4}%＝合計${rate.toFixed(2)}%</span></td>
+        <td></td><td class="tr">¥ ${fmt(fkAmt)}</td>
+      </tr>
+      <tr class="pcat"><td colspan="5">◆ 建退共掛金</td></tr>
+      <tr class="psub"><td colspan="3">建設業退職金共済制度掛金（320円/日×${nv('ktkDays')}日）</td><td></td><td class="tr">¥ ${fmt(ktkAmt)}</td></tr>
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">建退共掛金　小計</td><td></td><td class="tr">¥ ${fmt(ktkAmt)}</td></tr>
+      <tr class="pcat"><td colspan="5">◆ 安全衛生経費</td></tr>
+      <tr class="psub"><td colspan="3">安全衛生経費（①個別積み上げ＋②経費率計上分）</td><td></td><td class="tr">¥ ${fmt(anzenAmt)}</td></tr>
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">安全衛生経費　小計</td><td></td><td class="tr">¥ ${fmt(anzenAmt)}</td></tr>
+      <tr class="pcat"><td colspan="5">◆ 諸経費（現場管理費等・一般管理費等）</td></tr>
+      ${bR3('sho')}
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">諸経費　小計</td><td></td><td class="tr">¥ ${fmt(shoS)}</td></tr>
+      ${disc>0?`<tr><td colspan="3" style="text-align:right;color:#c0392b">値引き</td><td></td><td class="tr" style="color:#c0392b">-¥ ${fmt(disc)}</td></tr>`:''}
+      <tr class="ptot2"><td colspan="3">見積金額合計（税抜）（A）</td><td></td><td class="tr">¥ ${fmt(subtotalFk)}</td></tr>
+      <tr><td colspan="3">消費税（${taxRate}%）</td><td></td><td class="tr">¥ ${fmt(tax)}</td></tr>
+      <tr class="pgrnd"><td colspan="3">見積金額合計（税込）</td><td></td><td class="tr">¥ ${fmt(total)}</td></tr>
+    </tbody>
+  </table>
+  <div class="s2n">
+    ※法定福利費（令和8年度・建設業・事業主負担分）：雇用保険${r1}%・健康保険（協会けんぽ埼玉）${r2}%・介護保険${r3}%・厚生年金＋子育て拠出金${r4}%　合計${rate.toFixed(2)}%<br>
+    ※本見積書は埼玉土建上尾伊奈支部版標準見積書に基づき作成。建設業法第20条・国交省「労務費に関する基準」（R7.12施行）対応。<br>
+  </div>
+  </div>`;
+
+  document.getElementById('pra').innerHTML=s1+s2;
+}
+
+function printJigyo(){
+  buildJigyoHTML();
+  setTimeout(()=>window.print(),300);
+}
+
+function buildOyaHTML(){
+  const days=nv('oyaDays');
+  const matS=cs('oyaMat',true);
+  const laborS=Math.round(days*nv('oyaLaborDay'));
+  const kokuho=nv('oyaKokuho'),nenkin=nv('oyaNenkin');
+  const fkAmt=Math.round(days*(kokuho+nenkin));
+  const ktkAmt=Math.round(days*320);
+  const anzenAmt=nv('oyaAnzenTotal');
+  const rosaiAmt=Math.round(days*nv('oyaRosaiDay'));
+  const shoS=cs('oyaSho',false);
+  const disc=parseFloat(v('disc'))||0, taxRate=parseInt(v('taxRate')||'10');
+  const subtotal=matS+laborS+fkAmt+ktkAmt+anzenAmt+rosaiAmt+shoS-disc;
+  const tax=Math.floor(subtotal*taxRate/100), total=subtotal+tax;
+  const isInv=curTab==='invoice';
+  const dTitle=isInv?'御　請　求　書':'御　見　積　書';
+  const cn=v('cName')||'（未入力）',cp=v('cPerson'),ca=v('cAddr');
+  const iN=v('iName')||'（未入力）',iA=v('iAddr'),iT=v('iTel'),iP=v('iPerson');
+  const licNo=v('licNo'),licDate=v('licDate'),bank=v('bank');
+  const docNo=v('docNo'),docDate=v('docDate'),exD=v('expiryDate'),duD=v('dueDate'),payT=v('payTerm');
+  const wT=v('wTitle')||'（未入力）',wP=v('wPlace'),wF=v('wFrom'),wTo2=v('wTo');
+  const uketori=v('uketori'),sonota=v('sonota'),notes=v('notes');
+
+  const bRoya=(cat)=>{
+    const its=getR(cat,true);
+    if(!its.length)return`<tr><td class="psub gn" colspan="5" style="color:#bbb">（入力なし）</td></tr>`;
+    return its.map(i=>`<tr class="psub gn"><td>${i.name}</td><td class="tc">${i.qty||''}</td><td class="tr">${i.price?'¥ '+fmt(i.price):''}</td><td></td><td class="tr">¥ ${fmt(i.amount)}</td></tr>`).join('');
+  };
+  const bRoyas=(cat)=>{
+    const its=getR(cat,false);
+    if(!its.length)return`<tr><td class="psub gn" colspan="5" style="color:#bbb">（入力なし）</td></tr>`;
+    return its.map(i=>`<tr class="psub gn"><td colspan="3">${i.name}</td><td></td><td class="tr">¥ ${fmt(i.amount)}</td></tr>`).join('');
+  };
+
+  const s1=`<div class="pd">
+  ${licNo?`<div style="text-align:right;font-size:7pt;color:#666;margin-bottom:2px">建設業許可番号：${licNo}　許可年月日：${licDate||''}</div>`:''}
+  <div class="pt gn">${dTitle}<span style="font-size:9pt;letter-spacing:1px;margin-left:8px">（一人親方）</span></div>
+  <div class="psb">一人親方用標準見積書（埼玉土建上尾伊奈支部版・国交省「労務費に関する基準」令和7年12月施行対応）</div>
+  <div class="pdn">${docNo?'書類番号: '+docNo+'　':''}見積日付: ${fmtD(docDate)}</div>
+  <div class="pmeta">
+    <div>
+      <div style="font-size:7pt;color:#777;margin-bottom:2px">${isInv?'ご請求先':'お見積先'}</div>
+      <div class="pcn gn">${cn}${cp?'　'+cp:''}&ensp;御中</div>
+      ${ca?`<div style="font-size:7.5pt;color:#555;margin-top:2px">${ca}</div>`:''}
+      <div style="margin-top:6px;font-size:9pt">下記のとおり御見積申し上げます。</div>
+    </div>
+    <div class="piss">
+      <div style="font-size:11pt;font-weight:700">${iN}</div>
+      ${iA?`<div>${iA}</div>`:''}${iT?`<div>電話番号: ${iT}</div>`:''}${iP?`<div>担当（本人）: ${iP}</div>`:''}
+      <div style="margin-top:5px"><span class="seal">　印　</span></div>
+    </div>
+  </div>
+  <div class="pwk gn"><table>
+    <tr><td>工 事 名</td><td style="font-weight:700;font-size:9.5pt">${wT}</td></tr>
+    ${wP?`<tr><td>工 事 場 所</td><td>${wP}</td></tr>`:''}
+    <tr><td>工 期</td><td>自 ${fmtD(wF)}　至 ${fmtD(wTo2)}（就労予定：${days}日）</td></tr>
+    <tr><td>支 払 条 件</td><td>${payT||'　'}</td></tr>
+    ${!isInv&&exD?`<tr><td>見積有効期限</td><td>${fmtD(exD)}</td></tr>`:''}
+    ${isInv&&duD?`<tr><td>お支払期限</td><td style="color:#1e8449;font-weight:700">${fmtD(duD)}</td></tr>`:''}
+    ${uketori?`<tr><td>受渡場所</td><td>${uketori}</td></tr>`:''}
+    ${sonota?`<tr><td>そ の 他</td><td>${sonota}</td></tr>`:''}
+    ${isInv&&bank?`<tr><td>振 込 先</td><td>${bank}</td></tr>`:''}
+  </table></div>
+  <div class="pg gn"><span class="gl">見積金額合計（税込）</span><span class="ga">¥ ${fmt(total)} −</span></div>
+  <div class="pfk gn"><table>
+    <tr><td style="font-size:8pt;color:#555">見積金額合計のうち（建設業法第20条第1項等により内訳明示）</td><td></td></tr>
+    <tr><td style="padding-left:8px">材料費</td><td class="tr">¥ ${fmt(matS)}</td></tr>
+    <tr><td style="padding-left:8px">労務費（労務報酬）</td><td class="tr">¥ ${fmt(laborS)}</td></tr>
+    <tr><td style="padding-left:8px">建退共掛金<span style="font-size:6.5pt;color:#888">（320円/日×${days}日）</span></td><td class="tr">¥ ${fmt(ktkAmt)}</td></tr>
+    <tr><td style="padding-left:8px">安全衛生経費</td><td class="tr">¥ ${fmt(anzenAmt)}</td></tr>
+    <tr><td class="fkr gn" style="padding-left:8px">一人親方労災特別加入の保険料</td><td class="tr fkr gn">¥ ${fmt(rosaiAmt)}</td></tr>
+    <tr style="border-top:0.5px solid #ccc"><td colspan="2" style="font-size:6pt;color:#888">※見積金額合計には諸経費等も含まれます。また安全衛生経費は労務費等と一部重複することがあります。このため合計は上記5項目の合計とは一致しません。</td></tr>
+    <tr style="border-top:1px solid #ccc"><td>見積金額合計（税抜）</td><td class="tr" style="font-weight:700">¥ ${fmt(subtotal)}</td></tr>
+    <tr><td>消費税等（${taxRate}%）</td><td class="tr">¥ ${fmt(tax)}</td></tr>
+    <tr style="border-top:2px solid #333"><td style="font-weight:700;font-size:10pt">見積金額合計（税込）</td><td class="tr" style="font-weight:900;font-size:12pt">¥ ${fmt(total)}</td></tr>
+  </table></div>
+  ${notes?`<div style="margin-top:5px;font-size:7.5pt;color:#444;border-top:0.5px solid #ccc;padding-top:4px;white-space:pre-wrap"><strong>備考：</strong> ${notes}</div>`:''}
+  <div class="plaw gn">一人親方の社会保険料負担は「事業主でなく本人負担」のため標準見積書の法定福利費の対象外ですが、処遇改善のため法定福利費相当額を本見積書に含めています。建設工事従事者の安全及び健康の確保の推進に関する法律第10条に基づき、請負代金の積算・明示の促進が求められています。</div>
+  <div class="pfn">※国交省「労務費に関する基準」ポータル: https://roumuhi.mlit.go.jp/</div>
+  </div>`;
+
+  const laborDay=nv('oyaLaborDay'), kokuhoD=nv('oyaKokuho'), nenkinD=nv('oyaNenkin'), rosaiD=nv('oyaRosaiDay');
+  const s2=`<div class="pd">
+  <div style="font-size:9pt;font-weight:700;text-align:center;border-bottom:2px solid #1e8449;padding-bottom:3px;margin-bottom:5px;color:#1e8449">請求根拠シート（内訳明細書）</div>
+  <div style="font-size:8pt;margin-bottom:5px">工事名：<strong>${wT}</strong>　就労予定：<strong>${days}日</strong></div>
+  <table class="ptbl gn">
+    <thead><tr>
+      <th style="width:38%">費目・名称</th>
+      <th style="width:14%">1日あたり単価</th>
+      <th style="width:8%">日数</th>
+      <th style="width:6%">備考</th>
+      <th style="width:14%">金額（円）</th>
+    </tr></thead>
+    <tbody>
+      <tr class="pcat gn"><td colspan="5">◆ 材料費</td></tr>
+      ${bRoya('oyaMat')}
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">材料費　小計</td><td></td><td class="tr">¥ ${fmt(matS)}</td></tr>
+      <tr class="pcat gn"><td colspan="5">◆ 労務報酬・労務費</td></tr>
+      <tr class="plbr"><td>労務報酬（1日8時間就労）</td><td class="tr">¥ ${fmt(laborDay)}/日</td><td class="tc">${days}日</td><td></td><td class="tr">¥ ${fmt(laborS)}</td></tr>
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">労務報酬　小計</td><td></td><td class="tr">¥ ${fmt(laborS)}</td></tr>
+      <tr class="pcat gn"><td colspan="5">◆ 法定福利費相当額（本人負担・参考）</td></tr>
+      <tr class="pfkr gn"><td>建設国保料（本人負担相当）</td><td class="tr">¥ ${fmt(kokuhoD)}/日</td><td class="tc">${days}日</td><td></td><td class="tr">¥ ${fmt(Math.round(days*kokuhoD))}</td></tr>
+      <tr class="pfkr gn"><td>国民年金保険料（本人負担相当）</td><td class="tr">¥ ${fmt(nenkinD)}/日</td><td class="tc">${days}日</td><td></td><td class="tr">¥ ${fmt(Math.round(days*nenkinD))}</td></tr>
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">法定福利費相当額　小計</td><td></td><td class="tr">¥ ${fmt(fkAmt)}</td></tr>
+      <tr class="pcat gn"><td colspan="5">◆ 建退共掛金</td></tr>
+      <tr class="psub gn"><td>建退共掛金（320円/日）</td><td class="tr">¥ 320/日</td><td class="tc">${days}日</td><td></td><td class="tr">¥ ${fmt(ktkAmt)}</td></tr>
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">建退共掛金　小計</td><td></td><td class="tr">¥ ${fmt(ktkAmt)}</td></tr>
+      <tr class="pcat gn"><td colspan="5">◆ 安全衛生経費</td></tr>
+      <tr class="psub gn"><td>安全衛生経費（①積み上げ＋②経費率）</td><td></td><td></td><td></td><td class="tr">¥ ${fmt(anzenAmt)}</td></tr>
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">安全衛生経費　小計</td><td></td><td class="tr">¥ ${fmt(anzenAmt)}</td></tr>
+      <tr class="pcat gn"><td colspan="5">◆ 一人親方労災特別加入の保険料</td></tr>
+      <tr class="psub gn"><td>一人親方労災保険料</td><td class="tr">¥ ${fmt(rosaiD)}/日</td><td class="tc">${days}日</td><td></td><td class="tr">¥ ${fmt(rosaiAmt)}</td></tr>
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">一人親方労災　小計</td><td></td><td class="tr">¥ ${fmt(rosaiAmt)}</td></tr>
+      <tr class="pcat gn"><td colspan="5">◆ 諸経費等（現場管理費・一般管理費・特定日数計上経費等）</td></tr>
+      ${bRoyas('oyaSho')}
+      <tr class="ptot"><td colspan="3" style="padding-left:4px">諸経費等　小計</td><td></td><td class="tr">¥ ${fmt(shoS)}</td></tr>
+      ${disc>0?`<tr><td colspan="3" style="text-align:right;color:#c0392b">値引き</td><td></td><td class="tr" style="color:#c0392b">-¥ ${fmt(disc)}</td></tr>`:''}
+      <tr class="ptot2"><td colspan="3">見積金額合計（税抜）</td><td></td><td class="tr">¥ ${fmt(subtotal)}</td></tr>
+      <tr><td colspan="3">消費税（${taxRate}%）</td><td></td><td class="tr">¥ ${fmt(tax)}</td></tr>
+      <tr class="pgrnd gn"><td colspan="3">見積金額合計（税込）</td><td></td><td class="tr">¥ ${fmt(total)}</td></tr>
+    </tbody>
+  </table>
+  <div class="s2n">
+    ※本見積書は埼玉土建上尾伊奈支部版一人親方用標準見積書に基づき作成。建設業法第20条・国交省「労務費に関する基準」（R7.12施行）対応。<br>
+    ※法定福利費相当額は一人親方本人負担分。労務報酬＋法定福利費相当額の合計が公共工事設計労務単価を下回らないよう留意。<br>
+  </div>
+  </div>`;
+
+  document.getElementById('pra').innerHTML=s1+s2;
+}
+
+function printOya(){
+  buildOyaHTML();
+  setTimeout(()=>window.print(),300);
+}
+
+(function(){
+  sv('docDate',new Date().toISOString().split('T')[0]);
+  const ex=new Date();ex.setDate(ex.getDate()+30);sv('expiryDate',ex.toISOString().split('T')[0]);
+  const du=new Date();du.setDate(du.getDate()+30);sv('dueDate',du.toISOString().split('T')[0]);
+  const auto=localStorage.getItem(SK+'_auto');
+  if(auto){try{const d=JSON.parse(auto);if(d.wTitle||d.cName){if(confirm('前回の入力データが見つかりました。\n復元しますか？')){localStorage.setItem(SK,auto);applyData(d);return;}}}catch(e){}}
+  render();
+})();
+</script>
+</body>
+</html>
