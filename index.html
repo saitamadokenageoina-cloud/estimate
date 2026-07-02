@@ -7,9 +7,9 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bl:#1a5276;--bll:#eaf2f8;--blm:#d6eaf8;--rd:#c0392b;--rl:#fff3f3;--gn:#1e8449;--gl:#eafaf1;--am:#b7770d;--al:#fef9e7;--gy:#555;--bd:#ccc;--bg:#f0f4f8}
-body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(--bg);font-size:16px;color:#1a1a1a;min-height:100vh;padding-top:106px}
+body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(--bg);font-size:16px;color:#1a1a1a;min-height:100vh;padding-top:114px}
 /* ヘッダー */
-.hdr{background:var(--bl);color:#fff;padding:10px 14px;position:fixed;top:0;left:0;right:0;z-index:204;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.hdr{background:var(--bl);color:#fff;padding:10px 14px;position:fixed;top:0;left:0;right:0;z-index:1000;box-shadow:0 2px 8px rgba(0,0,0,.3)}
 .hdr-r{display:flex;align-items:center;gap:8px}
 .hdr h1{font-size:17px;font-weight:700;flex:1}
 .bk{background:rgba(255,255,255,.2);border-radius:10px;padding:2px 8px;font-size:10px}
@@ -26,8 +26,8 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 .banner p{font-size:13px;color:#444;line-height:1.7;margin-bottom:5px}
 .ln{padding:8px 11px;background:#fef9e7;border:1px solid #f9e79f;border-radius:6px;font-size:13px;color:#7d6608;line-height:1.7}
 /* 保存バー */
-.sbar{display:flex;gap:5px;padding:7px 10px;background:#fff;border-bottom:2px solid var(--bd);position:fixed;top:52px;left:0;right:0;z-index:203;box-shadow:0 2px 6px rgba(0,0,0,.15)}
-.sbar button{flex:1;padding:11px 4px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--bd);background:#fff;display:flex;align-items:center;justify-content:center;gap:3px;position:relative;z-index:205;pointer-events:all;-webkit-tap-highlight-color:rgba(0,0,0,.1);touch-action:manipulation}
+.sbar{display:flex;gap:5px;padding:7px 10px;background:#fff;border-bottom:2px solid var(--bd);position:fixed;top:52px;left:0;right:0;z-index:999;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.sbar button{flex:1;padding:11px 4px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--bd);background:#fff;display:flex;align-items:center;justify-content:center;gap:3px;position:relative;z-index:1000;pointer-events:all;-webkit-tap-highlight-color:rgba(0,0,0,.1);touch-action:manipulation;-webkit-user-select:none;user-select:none}
 .bs{background:var(--gn)!important;color:#fff!important;border-color:var(--gn)!important}
 .bl2{color:var(--bl)!important;border-color:var(--bl)!important}
 .ba{color:var(--am)!important;border-color:var(--am)!important}
@@ -110,7 +110,7 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 .pb.blue{background:var(--bl)}.pb.green{background:var(--gn)}
 .pb.preview{background:#117a65}
 /* プレビューモーダル */
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:500;overflow-y:auto;-webkit-overflow-scrolling:touch;pointer-events:none}
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:1100;overflow-y:auto;-webkit-overflow-scrolling:touch;pointer-events:none}
 .modal-overlay.show{display:block;pointer-events:auto}
 .modal-inner{background:#e8e8e8;min-height:100%;padding:12px 8px 30px;display:flex;flex-direction:column;align-items:center;gap:14px}
 .modal-header{width:100%;max-width:620px;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#1a5276;color:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
@@ -125,7 +125,7 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 .modal-print-btn.gn{background:#1e8449}
 .pb:active{opacity:.85;transform:scale(.98)}
 .ph{text-align:center;font-size:11px;color:var(--gy);margin-top:5px}
-.stt{position:fixed;bottom:18px;right:14px;background:var(--bl);color:#fff;border:none;border-radius:50%;width:42px;height:42px;font-size:19px;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.25);display:none;align-items:center;justify-content:center;z-index:200}
+.stt{position:fixed;bottom:18px;right:14px;background:var(--bl);color:#fff;border:none;border-radius:50%;width:42px;height:42px;font-size:19px;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.25);display:none;align-items:center;justify-content:center;z-index:998}
 .stt.show{display:flex}
 .toast{position:fixed;bottom:68px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:9px 18px;border-radius:18px;font-size:12px;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1}
@@ -255,8 +255,243 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 <div class="dtab">
   <div class="dt on" onclick="setTab('estimate')">御　見　積　書</div>
   <div class="dt" onclick="setTab('invoice')">御　請　求　書</div>
+  <div class="dt" onclick="setTab('manual')" style="color:#117a65;font-size:13px">📖 説明書</div>
 </div>
 
+<!-- 説明書エリア -->
+<div id="manualArea" style="display:none">
+  <div style="background:#fff;margin:8px 10px;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)">
+    <div style="background:#117a65;color:#fff;padding:12px 16px;font-size:15px;font-weight:700">
+      📖 標準見積書作成アプリ　使い方説明書
+    </div>
+    <div style="padding:14px">
+
+      <!-- ホーム画面追加説明 -->
+      <div style="background:#fef9e7;border:1px solid #f9e79f;border-radius:10px;padding:14px;margin-bottom:16px">
+        <div style="font-size:15px;font-weight:700;color:#7d6608;margin-bottom:10px">📱 スマホのホーム画面に追加する方法</div>
+        <div style="font-size:13px;color:#555;margin-bottom:12px">アプリとしてホーム画面に追加すると、アイコンをタップするだけで起動できます。</div>
+
+        <div style="background:#fff;border-radius:8px;padding:12px;margin-bottom:10px;border:1px solid #e5d58a">
+          <div style="font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:8px">🍎 iPhoneの場合（Safari使用）</div>
+          <div style="font-size:13px;color:#333;line-height:2">
+            ① Safariでアプリを開く<br>
+            ② 画面下の <strong>「共有」ボタン（□↑）</strong> をタップ<br>
+            ③ 「<strong>ホーム画面に追加</strong>」をタップ<br>
+            ④ 名前を「標準見積書」などに変更して「<strong>追加</strong>」をタップ<br>
+            ⑤ ホーム画面にアイコンが追加されます ✅
+          </div>
+        </div>
+
+        <div style="background:#fff;border-radius:8px;padding:12px;border:1px solid #e5d58a">
+          <div style="font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:8px">🤖 Androidの場合（Chrome使用）</div>
+          <div style="font-size:13px;color:#333;line-height:2">
+            ① Chromeでアプリを開く<br>
+            ② 右上の <strong>「⋮（メニュー）」</strong> をタップ<br>
+            ③ 「<strong>ホーム画面に追加</strong>」または「<strong>アプリをインストール</strong>」をタップ<br>
+            ④ 「<strong>追加</strong>」をタップ<br>
+            ⑤ ホーム画面にアイコンが追加されます ✅
+          </div>
+        </div>
+      </div>
+
+      <!-- 基本的な使い方 -->
+      <div style="background:#eaf2f8;border-radius:10px;padding:14px;margin-bottom:16px">
+        <div style="font-size:15px;font-weight:700;color:#1a5276;margin-bottom:10px">📋 基本的な使い方</div>
+
+        <div style="background:#fff;border-radius:8px;padding:12px;margin-bottom:10px">
+          <div style="font-size:14px;font-weight:700;color:#1a5276;margin-bottom:6px">STEP 1：事業者用 / 一人親方用を選ぶ</div>
+          <div style="font-size:13px;color:#333;line-height:1.8">
+            画面上部の 🏢<strong>事業者用</strong> または 👤<strong>一人親方用</strong> ボタンをタップして切り替えます。<br>
+            ・事業者用：従業員を雇用している建設業者向け<br>
+            ・一人親方用：一人で請負仕事をする方向け
+          </div>
+        </div>
+
+        <div style="background:#fff;border-radius:8px;padding:12px;margin-bottom:10px">
+          <div style="font-size:14px;font-weight:700;color:#1a5276;margin-bottom:6px">STEP 2：見積書 / 請求書を選ぶ</div>
+          <div style="font-size:13px;color:#333;line-height:1.8">
+            「<strong>御見積書</strong>」または「<strong>御請求書</strong>」タブをタップして選択します。
+          </div>
+        </div>
+
+        <div style="background:#fff;border-radius:8px;padding:12px;margin-bottom:10px">
+          <div style="font-size:14px;font-weight:700;color:#1a5276;margin-bottom:6px">STEP 3：情報を入力する</div>
+          <div style="font-size:13px;color:#333;line-height:1.8">
+            各セクションをタップして開き、情報を入力します。<br>
+            ・📄 書類情報：書類番号・発行日・有効期限<br>
+            ・🏢 宛先：発注者・元請の会社名・担当者<br>
+            ・🔨 発行者情報：自社の情報・許可番号<br>
+            ・🏗️ 工事情報：工事件名・場所・工期<br>
+            ・明細各項目：材料費・労務費等を入力
+          </div>
+        </div>
+
+        <div style="background:#fff;border-radius:8px;padding:12px;margin-bottom:10px">
+          <div style="font-size:14px;font-weight:700;color:#1a5276;margin-bottom:6px">STEP 4：合計金額を確認する</div>
+          <div style="font-size:13px;color:#333;line-height:1.8">
+            画面上部の青い帯に<strong>税込合計金額</strong>がリアルタイムで表示されます。<br>
+            法定福利費・消費税も自動計算されます。
+          </div>
+        </div>
+
+        <div style="background:#fff;border-radius:8px;padding:12px">
+          <div style="font-size:14px;font-weight:700;color:#1a5276;margin-bottom:6px">STEP 5：プレビューして印刷・PDF保存</div>
+          <div style="font-size:13px;color:#333;line-height:1.8">
+            ① 「👁️ プレビューを表示する」で内容を確認<br>
+            ② 「🖨️ A4×2枚でPDF保存・印刷する」をタップ<br>
+            ③ 印刷画面で「<strong>PDFに保存</strong>」を選択<br>
+            ④ 様式1（表紙）＋様式2（内訳書）のA4×2枚で出力されます
+          </div>
+        </div>
+      </div>
+
+      <!-- 保存機能説明 -->
+      <div style="background:#eafaf1;border-radius:10px;padding:14px;margin-bottom:16px">
+        <div style="font-size:15px;font-weight:700;color:#1e8449;margin-bottom:10px">💾 データの保存・管理</div>
+
+        <div style="overflow-x:auto;margin-bottom:10px">
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <tr style="background:#1e8449;color:#fff">
+              <th style="padding:9px 10px;text-align:left;border-radius:6px 0 0 0">ボタン</th>
+              <th style="padding:9px 10px;text-align:left">機能</th>
+              <th style="padding:9px 10px;text-align:left;border-radius:0 6px 0 0">使いどき</th>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #ddd">
+              <td style="padding:9px 10px;font-weight:700">💾 保存</td>
+              <td style="padding:9px 10px">このスマホ・PCに保存（最大20件）</td>
+              <td style="padding:9px 10px">入力のたびにこまめに</td>
+            </tr>
+            <tr style="background:#f9f9f9;border-bottom:1px solid #ddd">
+              <td style="padding:9px 10px;font-weight:700">📂 一覧</td>
+              <td style="padding:9px 10px">保存した見積書一覧・読込・削除</td>
+              <td style="padding:9px 10px">過去のデータを使うとき</td>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #ddd">
+              <td style="padding:9px 10px;font-weight:700">📤 出力</td>
+              <td style="padding:9px 10px">JSONファイルとしてダウンロード</td>
+              <td style="padding:9px 10px">バックアップ・他端末への共有</td>
+            </tr>
+            <tr style="background:#f9f9f9;border-bottom:1px solid #ddd">
+              <td style="padding:9px 10px;font-weight:700">📥 取込</td>
+              <td style="padding:9px 10px">JSONファイルから復元</td>
+              <td style="padding:9px 10px">機種変更・別端末で使うとき</td>
+            </tr>
+            <tr style="background:#fff">
+              <td style="padding:9px 10px;font-weight:700">🗑️ クリア</td>
+              <td style="padding:9px 10px">入力内容をすべてクリア</td>
+              <td style="padding:9px 10px">新しい見積書を作るとき</td>
+            </tr>
+          </table>
+        </div>
+
+        <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:10px;font-size:13px;color:#856404">
+          ⚠️ <strong>重要：</strong>スマホの「ブラウザのデータを消去」をすると保存データが消えます。<br>
+          定期的に「📤 出力」でJSONファイルをダウンロードしてバックアップしてください。
+        </div>
+      </div>
+
+      <!-- 事業者用説明 -->
+      <div style="background:#eaf2f8;border-radius:10px;padding:14px;margin-bottom:16px">
+        <div style="font-size:15px;font-weight:700;color:#1a5276;margin-bottom:10px">🏢 事業者用の入力項目</div>
+
+        <div style="font-size:13px;color:#333;line-height:1.9">
+          <div style="background:#fff;border-radius:8px;padding:10px;margin-bottom:8px">
+            <strong>📦 材料費</strong>：工事で使う資材・材料（塗料・木材・配管等）<br>
+            　項目名・数量・単価を入力 → 自動計算
+          </div>
+          <div style="background:#fefce8;border-radius:8px;padding:10px;margin-bottom:8px;border-left:3px solid #1e8449">
+            <strong>👷 労務費（最重要）</strong>：技能者に支払う賃金<br>
+            　「公共工事設計労務単価 × 人工数」で計算<br>
+            　例：33,000円 × 10人工 ＝ 330,000円<br>
+            　<a href="https://roumuhi.mlit.go.jp/labor-cost-standard/search/prefecture/saitama" target="_blank" style="color:#1e8449">→ 埼玉県の設計労務単価を確認</a>
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px;margin-bottom:8px">
+            <strong>🔧 機械等・その他直接費</strong>：足場・クレーン等のリース代
+          </div>
+          <div style="background:#fff3f3;border-radius:8px;padding:10px;margin-bottom:8px;border-left:3px solid #c0392b">
+            <strong>⚠️ 法定福利費（別枠明示・義務）</strong>：社会保険料の事業主負担分<br>
+            　令和8年度の料率が自動設定済み。労務費から自動計算。<br>
+            　土建国保加入の場合は健康保険欄を「0」に変更
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px;margin-bottom:8px">
+            <strong>📗 建退共掛金</strong>：日数入力で自動計算（320円/日）
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px;margin-bottom:8px">
+            <strong>🦺 安全衛生経費</strong>：①個別積み上げ＋②労務費×経費率
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px">
+            <strong>📊 諸経費</strong>：現場管理費・一般管理費・利益等
+          </div>
+        </div>
+      </div>
+
+      <!-- 一人親方用説明 -->
+      <div style="background:#eafaf1;border-radius:10px;padding:14px;margin-bottom:16px">
+        <div style="font-size:15px;font-weight:700;color:#1e8449;margin-bottom:10px">👤 一人親方用の入力項目</div>
+
+        <div style="font-size:13px;color:#333;line-height:1.9">
+          <div style="background:#fff;border-radius:8px;padding:10px;margin-bottom:8px;border-left:3px solid #117a65">
+            <strong>📅 就労日数を最初に入力（重要）</strong><br>
+            　日数を入力すると関連する金額がすべて自動計算されます
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px;margin-bottom:8px">
+            <strong>👤 労務報酬</strong>：1日あたりの単価を入力<br>
+            　公共工事設計労務単価を参考に設定
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px;margin-bottom:8px;border-left:3px solid #1e8449">
+            <strong>💚 法定福利費相当額</strong>：建設国保＋国民年金（1日あたり）<br>
+            　例：建設国保 1,733円/日＋国民年金 809円/日
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px;margin-bottom:8px">
+            <strong>📗 建退共掛金</strong>：320円×就労日数で自動計算
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px;margin-bottom:8px">
+            <strong>🏥 一人親方労災保険料</strong>：1日あたり単価×就労日数
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px">
+            <strong>🚗 諸経費等</strong>：交通費・道具損料・通信費等（目安：2,400円/日）
+          </div>
+        </div>
+      </div>
+
+      <!-- 法的根拠 -->
+      <div style="background:#f5f5f5;border-radius:10px;padding:14px;margin-bottom:16px">
+        <div style="font-size:15px;font-weight:700;color:#333;margin-bottom:10px">⚖️ 法的根拠・参考資料</div>
+        <div style="font-size:13px;color:#333;line-height:2">
+          ・<strong>建設業法第20条第1項・第2項</strong>：見積書への内訳明示義務（R7.12施行）<br>
+          ・<strong>建設業法第19条の3</strong>：原価割れ契約の禁止<br>
+          ・<strong>国交省「労務費に関する基準」</strong>：R7.12.2 中建審決定<br>
+          ・<strong>第三次担い手3法</strong>：建設業法・品確法・入契法の改正
+        </div>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px">
+          <a href="https://roumuhi.mlit.go.jp/" target="_blank" style="display:block;padding:10px 14px;background:#1a5276;color:#fff;border-radius:7px;font-size:13px;text-decoration:none;font-weight:600">🔗 国交省「労務費に関する基準」ポータルサイト</a>
+          <a href="https://roumuhi.mlit.go.jp/labor-cost-standard/search/prefecture/saitama" target="_blank" style="display:block;padding:10px 14px;background:#1e8449;color:#fff;border-radius:7px;font-size:13px;text-decoration:none;font-weight:600">🔗 埼玉県の設計労務単価を確認</a>
+        </div>
+      </div>
+
+      <!-- 相談窓口 -->
+      <div style="background:#fff3f3;border:1.5px solid #c0392b;border-radius:10px;padding:14px">
+        <div style="font-size:15px;font-weight:700;color:#c0392b;margin-bottom:8px">📞 お困りのときは組合に相談を</div>
+        <div style="font-size:13px;color:#333;line-height:1.9">
+          ・上位会社から労務費を一方的に削減された<br>
+          ・見積書の提出を断られた<br>
+          ・著しく短い工期を押し付けられた<br>
+          ・使い方がわからない
+        </div>
+        <div style="margin-top:10px;padding:10px 14px;background:#fff;border-radius:7px;font-size:14px;font-weight:700;color:#c0392b;text-align:center">
+          📞 埼玉土建上尾伊奈支部<br>
+          <span style="font-size:18px">048-773-9863</span>
+        </div>
+        <div style="margin-top:8px;font-size:12px;color:#888;text-align:center">
+          建設業法違反通報窓口「駆け込みホットライン」→ 国土交通省
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="mainContent">
 <!-- 合計バー -->
 <div class="tbar blue" id="tbar">
   <div class="tl">見積金額（税込）</div>
@@ -658,6 +893,7 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
     <button class="modal-print-btn blue" id="modalPrintBtn" onclick="doPrint()">🖨️　このままPDF保存・印刷する</button>
   </div>
 </div>
+</div><!-- /mainContent -->
 
 <div class="pra" id="pra"></div>
 <style>
@@ -747,11 +983,22 @@ function setMode(m){
 
 function setTab(t){
   curTab=t;
-  document.querySelectorAll('.dt').forEach((el,i)=>el.classList.toggle('on',(i===0&&t==='estimate')||(i===1&&t==='invoice')));
-  document.getElementById('exf').style.display=t==='estimate'?'':'none';
-  document.getElementById('duf').style.display=t==='invoice'?'':'none';
-  document.getElementById('bkf').style.display=t==='invoice'?'':'none';
-  render();
+  const isManual=t==='manual';
+  document.querySelectorAll('.dt').forEach((el,i)=>el.classList.toggle('on',
+    (i===0&&t==='estimate')||(i===1&&t==='invoice')||(i===2&&t==='manual')));
+  // 説明書タブ切替
+  const manualArea=document.getElementById('manualArea');
+  const tbar=document.getElementById('tbar');
+  const mainContent=document.getElementById('mainContent');
+  if(manualArea) manualArea.style.display=isManual?'':'none';
+  if(tbar) tbar.style.display=isManual?'none':'';
+  if(mainContent) mainContent.style.display=isManual?'none':'';
+  if(!isManual){
+    document.getElementById('exf').style.display=t==='estimate'?'':'none';
+    document.getElementById('duf').style.display=t==='invoice'?'':'none';
+    document.getElementById('bkf').style.display=t==='invoice'?'':'none';
+    render();
+  }
 }
 
 function tog(h){const b=h.nextElementSibling;const a=h.querySelector('span:last-child');b.classList.toggle('hide');a.textContent=b.classList.contains('hide')?'▼':'▲';}
