@@ -220,9 +220,35 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 <!-- 保存バー -->
 <div class="sbar">
   <button class="bs" onclick="saveData()">💾 保存</button>
-  <button class="bl2" onclick="loadData()">📂 読込</button>
-  <button class="ba" onclick="dlCSV()">📊 CSV</button>
+  <button class="bl2" onclick="openList()">📂 一覧</button>
+  <button class="ba" onclick="dlJSON()">📤 出力</button>
+  <button class="ba" onclick="importJSON()">📥 取込</button>
   <button class="br" onclick="clearData()">🗑️ クリア</button>
+</div>
+<!-- 隠しinput（ファイル取込用） -->
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="doImport(event)">
+
+<!-- 保存一覧モーダル -->
+<div class="modal-overlay" id="listModal">
+  <div class="modal-inner">
+    <div class="modal-header" id="listModalHeader">
+      <h2>📂 保存データ一覧</h2>
+      <button class="modal-close" onclick="closeList()">✕ 閉じる</button>
+    </div>
+    <div style="width:100%;max-width:620px">
+      <button onclick="saveData();renderList()" style="width:100%;padding:13px;background:#1e8449;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;margin-bottom:10px">
+        💾 現在の内容を新規保存する
+      </button>
+      <div id="listContainer" style="display:flex;flex-direction:column;gap:8px"></div>
+      <div style="margin-top:14px;padding:12px;background:#fff;border-radius:10px;font-size:13px;color:#555;line-height:1.8">
+        <strong>📌 データの保存について</strong><br>
+        ・「💾 保存」→ このスマホ・PCのブラウザに保存<br>
+        ・「📤 出力」→ JSONファイルとしてダウンロード保存（バックアップ用）<br>
+        ・「📥 取込」→ JSONファイルから復元（機種変更・共有時）<br>
+        ・ブラウザのデータを削除すると消えます。重要なデータは必ず「📤 出力」でバックアップを！
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- 書類タブ -->
@@ -948,8 +974,167 @@ function applyData(d){
   render();
 }
 
-function saveData(){try{localStorage.setItem(SK,JSON.stringify(collect()));toast('💾 保存しました','#1e8449');}catch(e){toast('保存失敗','#c0392b');}}
-function loadData(){try{const raw=localStorage.getItem(SK);if(!raw){toast('保存データがありません','#b7770d');return;}applyData(JSON.parse(raw));toast('📂 読み込みました','#1a5276');}catch(e){toast('読み込み失敗','#c0392b');}}
+// ===== データ管理 =====
+const SK_LIST='doken_list_v1'; // 複数保存リストのキー
+
+function getSaveList(){
+  try{return JSON.parse(localStorage.getItem(SK_LIST))||[];}
+  catch(e){return [];}
+}
+function setSaveList(list){
+  localStorage.setItem(SK_LIST,JSON.stringify(list));
+}
+
+function saveData(){
+  const d=collect();
+  const now=new Date();
+  const label=`${d.wTitle||'（工事名未入力）'}｜${d.curMode==='jigyo'?'事業者':'一人親方'}｜${now.toLocaleDateString('ja-JP')} ${now.toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'})}`;
+  const list=getSaveList();
+  // 同じ工事名・モードがあれば上書き確認
+  const existIdx=list.findIndex(i=>i.wTitle===d.wTitle&&i.curMode===d.curMode);
+  if(existIdx>=0){
+    if(!confirm(`「${d.wTitle||'（未入力）'}」のデータが既に保存されています。
+上書きしますか？`)){
+      return;
+    }
+    list[existIdx]={...d,_label:label,_savedAt:now.toISOString()};
+  } else {
+    list.unshift({...d,_label:label,_savedAt:now.toISOString()});
+    // 最大20件まで保存
+    if(list.length>20) list.splice(20);
+  }
+  setSaveList(list);
+  // 最後に使ったデータとしても保存
+  localStorage.setItem(SK,JSON.stringify(d));
+  toast('💾 保存しました（一覧に追加）','#1e8449');
+}
+
+function loadData(){
+  try{
+    const raw=localStorage.getItem(SK);
+    if(!raw){toast('保存データがありません','#b7770d');return;}
+    applyData(JSON.parse(raw));
+    toast('📂 最後に保存したデータを読み込みました','#1a5276');
+  }catch(e){toast('読み込み失敗','#c0392b');}
+}
+
+function openList(){
+  renderList();
+  document.getElementById('listModal').classList.add('show');
+}
+function closeList(){
+  document.getElementById('listModal').classList.remove('show');
+}
+
+function renderList(){
+  const list=getSaveList();
+  const c=document.getElementById('listContainer');
+  if(list.length===0){
+    c.innerHTML='<div style="text-align:center;padding:30px;color:#888;background:#fff;border-radius:10px">保存データがありません。<br>「現在の内容を新規保存する」で保存してください。</div>';
+    return;
+  }
+  c.innerHTML=list.map((d,i)=>`
+    <div style="background:#fff;border-radius:10px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.1)">
+      <div style="font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:4px">${d._label||d.wTitle||'（無題）'}</div>
+      <div style="font-size:12px;color:#888;margin-bottom:10px">保存日時：${d._savedAt?new Date(d._savedAt).toLocaleString('ja-JP'):'-'}</div>
+      <div style="display:flex;gap:8px">
+        <button onclick="loadFromList(${i})" style="flex:1;padding:10px;background:#1a5276;color:#fff;border:none;border-radius:7px;font-size:14px;font-weight:600;cursor:pointer">📂 読み込む</button>
+        <button onclick="deleteFromList(${i})" style="padding:10px 14px;background:#fff;color:#c0392b;border:1.5px solid #c0392b;border-radius:7px;font-size:14px;cursor:pointer">削除</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function loadFromList(idx){
+  const list=getSaveList();
+  if(!list[idx]) return;
+  if(!confirm('現在の入力内容が上書きされます。読み込みますか？')) return;
+  applyData(list[idx]);
+  closeList();
+  toast('📂 読み込みました：'+(list[idx].wTitle||'（無題）'),'#1a5276');
+}
+
+function deleteFromList(idx){
+  const list=getSaveList();
+  if(!list[idx]) return;
+  if(!confirm(`「${list[idx].wTitle||'（無題）'}」を削除しますか？`)) return;
+  list.splice(idx,1);
+  setSaveList(list);
+  renderList();
+  toast('削除しました','#555');
+}
+
+// JSONファイルとしてダウンロード（バックアップ・共有用）
+function dlJSON(){
+  const d=collect();
+  const list=getSaveList();
+  const exportData={
+    _version:'doken_v1',
+    _exportedAt:new Date().toISOString(),
+    _app:'埼玉土建上尾伊奈支部版標準見積書',
+    current:d,
+    list:list
+  };
+  const json=JSON.stringify(exportData,null,2);
+  const bom='﻿';
+  const blob=new Blob([bom+json],{type:'application/json;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  const now=new Date();
+  const dateStr=`${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`;
+  a.download=`見積書データ_${d.wTitle||'全件'}_${dateStr}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('📤 JSONファイルをダウンロードしました（バックアップ保存）','#b7770d');
+}
+
+// JSONファイルから復元
+function importJSON(){
+  document.getElementById('importFile').click();
+}
+
+function doImport(e){
+  const file=e.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    try{
+      const raw=ev.target.result.replace(/^﻿/,'');
+      const data=JSON.parse(raw);
+      // バージョンチェック
+      if(!data._version||!data.current){
+        toast('❌ このファイルは対応していない形式です','#c0392b');
+        return;
+      }
+      const msg=`「${data.current.wTitle||'（無題）'}」
+保存日時：${data._exportedAt?new Date(data._exportedAt).toLocaleString('ja-JP'):'-'}
+
+このデータを取り込みますか？
+※現在の保存一覧にも追加されます`;
+      if(!confirm(msg)) return;
+      // 現在のデータに適用
+      applyData(data.current);
+      // 保存一覧にもマージ
+      if(data.list&&data.list.length>0){
+        const currentList=getSaveList();
+        data.list.forEach(item=>{
+          if(!currentList.find(i=>i._savedAt===item._savedAt)){
+            currentList.push(item);
+          }
+        });
+        currentList.sort((a,b)=>new Date(b._savedAt)-new Date(a._savedAt));
+        if(currentList.length>20) currentList.splice(20);
+        setSaveList(currentList);
+      }
+      toast('📥 データを取り込みました','#1e8449');
+    }catch(err){
+      toast('❌ ファイルの読み込みに失敗しました','#c0392b');
+    }
+  };
+  reader.readAsText(file,'UTF-8');
+  e.target.value='';
+}
 function clearData(){
   if(!confirm('入力内容をクリアしますか？'))return;
   ['mat','labor','other','sho','oyaMat','oyaSho'].forEach(cat=>{
@@ -961,7 +1146,62 @@ function clearData(){
   sv('docDate',new Date().toISOString().split('T')[0]);
   render();toast('🗑️ クリアしました','#555');
 }
-function dlCSV(){const d=collect();const rs=[];rs.push(['埼玉土建上尾伊奈支部　標準見積書']);rs.push(['種別',d.curMode==='jigyo'?'事業者用':'一人親方用']);rs.push(['工事名',d.wTitle],['宛先',d.cName]);const bom='\uFEFF';const csv=bom+rs.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\r\n');const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download=`見積書_${d.wTitle||'無題'}.csv`;a.click();toast('📊 CSVダウンロード','#b7770d');}
+function dlCSV(){
+  const d=collect();
+  const isOya=d.curMode==='oya';
+  const rs=[];
+  rs.push(['埼玉土建上尾伊奈支部版　標準見積書データ（CSV）']);
+  rs.push(['種別',isOya?'一人親方用':'事業者用'],['書類種別',d.curTab==='estimate'?'御見積書':'御請求書']);
+  rs.push(['書類番号',d.docNo],['発行日',d.docDate],['有効期限',d.expiryDate]);
+  rs.push(['工事名',d.wTitle],['工事場所',d.wPlace],['工期（自）',d.wFrom],['工期（至）',d.wTo]);
+  rs.push(['宛先',d.cName],['担当者',d.cPerson],['住所',d.cAddr]);
+  rs.push(['発行者',d.iName],['住所',d.iAddr],['TEL',d.iTel],['担当',d.iPerson]);
+  rs.push(['支払条件',d.payTerm],['消費税率',d.taxRate+'%'],['値引き',d.disc]);
+  rs.push([]);
+  if(!isOya){
+    rs.push(['【直接工事費】','','']);
+    rs.push(['区分','項目名','数量','単価','金額']);
+    const cats={mat:'材料費',labor:'労務費'};
+    Object.entries(cats).forEach(([cat,lbl])=>{
+      (d.items[cat]||[]).forEach(i=>rs.push([lbl,i.name,i.qty||'',i.price||'',i.amount||'']));
+    });
+    (d.items.other||[]).forEach(i=>rs.push(['機械等',i.name,'','',i.amount||'']));
+    rs.push(['建退共掛金','',d.ktkDays+'日','320円',d.ktkAmt]);
+    rs.push(['安全衛生①個別',d.anzen1||0,'','',d.anzen1||0]);
+    rs.push(['安全衛生②経費率','労務費×'+d.anzenRate+'%','','',d.anzen2||0]);
+    rs.push(['安全衛生合計','','','',d.anzenTotal||0]);
+    rs.push([]);
+    rs.push(['【諸経費】','','','','']);
+    (d.items.sho||[]).forEach(i=>rs.push(['諸経費',i.name,'','',i.amount||'']));
+    rs.push([]);
+    rs.push(['【法定福利費】','','','','']);
+    rs.push(['雇用保険（事業主）',d.r1+'%'],['健康保険（事業主）',d.r2+'%']);
+    rs.push(['介護保険（事業主）',d.r3+'%'],['厚生年金等（事業主）',d.r4+'%']);
+  } else {
+    rs.push(['就労日数',d.oyaDays+'日']);
+    rs.push(['労務報酬単価',d.oyaLaborDay+'円/日']);
+    rs.push(['建設国保（日額）',d.oyaKokuho+'円/日'],['国民年金（日額）',d.oyaNenkin+'円/日']);
+    rs.push(['一人親方労災（日額）',d.oyaRosaiDay+'円/日']);
+    rs.push(['安全衛生①日額',d.oyaAnzen1+'円/日'],['安全衛生②率',d.oyaAnzenRate+'%']);
+    rs.push([]);
+    rs.push(['【材料費明細】']);
+    (d.oyaRows.oyaMat||[]).forEach(i=>rs.push(['材料費',i.name,i.qty||'',i.price||'',i.amount||'']));
+    rs.push([]);
+    rs.push(['【諸経費明細】']);
+    (d.oyaRows.oyaSho||[]).forEach(i=>rs.push(['諸経費',i.name,'','',i.amount||'']));
+  }
+  rs.push(['備考',d.notes]);
+  const bom='﻿';
+  const csv=bom+rs.map(r=>r.map(c=>`"${String(c===undefined||c===null?'':c).replace(/"/g,'""')}"`).join(',')).join('
+');
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  const now=new Date();
+  const dateStr=`${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`;
+  a.download=`見積書_${d.wTitle||'無題'}_${dateStr}.csv`;
+  a.click();
+  toast('📊 CSVダウンロード（Excel確認用）','#b7770d');
+}
 
 function doPreview(){
   // プレビュー用HTMLを生成してモーダルに表示
