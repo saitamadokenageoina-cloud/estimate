@@ -7,9 +7,9 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bl:#1a5276;--bll:#eaf2f8;--blm:#d6eaf8;--rd:#c0392b;--rl:#fff3f3;--gn:#1e8449;--gl:#eafaf1;--am:#b7770d;--al:#fef9e7;--gy:#555;--bd:#ccc;--bg:#f0f4f8}
-body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(--bg);font-size:16px;color:#1a1a1a;min-height:100vh}
+body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(--bg);font-size:16px;color:#1a1a1a;min-height:100vh;padding-top:106px}
 /* ヘッダー */
-.hdr{background:var(--bl);color:#fff;padding:10px 14px;position:sticky;top:0;z-index:202;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.hdr{background:var(--bl);color:#fff;padding:10px 14px;position:fixed;top:0;left:0;right:0;z-index:204;box-shadow:0 2px 8px rgba(0,0,0,.3)}
 .hdr-r{display:flex;align-items:center;gap:8px}
 .hdr h1{font-size:17px;font-weight:700;flex:1}
 .bk{background:rgba(255,255,255,.2);border-radius:10px;padding:2px 8px;font-size:10px}
@@ -26,8 +26,8 @@ body{font-family:'Hiragino Kaku Gothic Pro','Meiryo',sans-serif;background:var(-
 .banner p{font-size:13px;color:#444;line-height:1.7;margin-bottom:5px}
 .ln{padding:8px 11px;background:#fef9e7;border:1px solid #f9e79f;border-radius:6px;font-size:13px;color:#7d6608;line-height:1.7}
 /* 保存バー */
-.sbar{display:flex;gap:5px;padding:7px 10px;background:#fff;border-bottom:1px solid var(--bd);position:sticky;top:48px;z-index:200;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.sbar button{flex:1;padding:9px 4px;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--bd);background:#fff;display:flex;align-items:center;justify-content:center;gap:3px;position:relative;z-index:201;pointer-events:auto}
+.sbar{display:flex;gap:5px;padding:7px 10px;background:#fff;border-bottom:2px solid var(--bd);position:fixed;top:52px;left:0;right:0;z-index:203;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.sbar button{flex:1;padding:11px 4px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--bd);background:#fff;display:flex;align-items:center;justify-content:center;gap:3px;position:relative;z-index:205;pointer-events:all;-webkit-tap-highlight-color:rgba(0,0,0,.1);touch-action:manipulation}
 .bs{background:var(--gn)!important;color:#fff!important;border-color:var(--gn)!important}
 .bl2{color:var(--bl)!important;border-color:var(--bl)!important}
 .ba{color:var(--am)!important;border-color:var(--am)!important}
